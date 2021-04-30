@@ -321,12 +321,15 @@ body, p {
 /* .menz-profil .menz-col {
     padding: 0 15px;
 } */
-h1.section-title {
+h1.section-title, h1.forgot-title {
     font-family: 'SF Pro Display';
     font-size: 40px;
     line-height: 1.1;
     font-weight: 600;
     color: #1d1d1f;
+}
+h1.forgot-title {
+    font-size: 32px;
 }
 .menz-profil .section-title {
     color: #666;
@@ -418,6 +421,39 @@ a.menz-view::after {
     background-color: #eee;
     background: linear-gradient(#fff,#eee);
     border-color: #d9d9d9;
+}
+.wrap-input100 {
+  position: relative;
+}
+.input100 {
+    min-width: 360px;
+    position: relative;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    height: 3.3em;
+    font-size: 17px;
+    line-height: 1.23543;
+    font-weight: 400;
+    font-family: 'SF Pro Display';
+    background: hsla(0,0%,100%,.8);
+    margin-bottom: 14px;
+    padding-top: 18px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.focus-input100 {
+    position: absolute;
+    top: 18px;
+    left: 17px;
+    color: #888;
+    padding: 0;
+    z-index: 1;
+    transition-timing-function: ease-in;
+    transition-duration: .125s;
+    pointer-events: none;
+    font-size: 17px;
+    line-height: 1.23543;
+    font-weight: 400;
 }
 
 @media (max-width:767px) {
