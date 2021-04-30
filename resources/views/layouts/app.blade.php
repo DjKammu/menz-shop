@@ -7,21 +7,19 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Rechnung - Menz Shop') }}</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Custom fonts for this template -->
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+  </head>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+  <body id="top">
+        <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -31,15 +29,15 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                    <!-- Left Side Of Navbar 
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <!-- Right Side Of Navbar 
+                    <ul class="navbar-nav ml-auto"> -->
                         <!-- Authentication Links -->
-                        @guest
+                        <!-- @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -51,8 +49,8 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                        @else
-                            <li class="nav-item dropdown">
+                        @else -->
+                            <!-- <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
@@ -73,11 +71,26 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> -->
 
-        <main class="py-4">
             @yield('content')
-        </main>
-    </div>
-</body>
-</html>
+
+
+      <footer class="menz-footer text-center menz-login-footer">
+        © Copyright - Menz Naturbaustoffe in Wiesbaden
+      </footer>
+
+     <!-- Bootstrap core JavaScript -->
+     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+ 
+     <!-- Plugin JavaScript -->
+     <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="{{ asset('js/form.js') }}"></script>
+  </body>
+
+                    
+  </html>
+

@@ -15,10 +15,22 @@ use App\Http\Controllers\PageController;
 */
 Auth::routes();
 
+
 Route::get('/', function () {
+
+    if (Auth::user()) { 
+        return redirect('/home');
+    } 
     return view('welcome');
 });
 
+// Route::get('/login',function(){
+//     return redirect('/');
+// });
+
+// Route::get('/register',function(){
+//     return redirect('/');
+// });
 
 Route::get('/linkstorage', function () {
     Artisan::call('storage:link');
@@ -39,3 +51,5 @@ Route::get('/admin:install', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');

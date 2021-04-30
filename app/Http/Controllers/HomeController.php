@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -24,5 +26,17 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function profile()
+    {
+        $user = Auth::user();
+
+        return view('profile',compact('user'));
     }
 }
