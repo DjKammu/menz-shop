@@ -17,9 +17,9 @@
                           <div class="inputBox">
                             <input type="text" class="form-control menz-input @error('email') is-invalid @enderror" name="email" id="idInput" value="{{ old('email') }}" required placeholder="Kundennumer" autofocus autocomplete="email" title="Please Fill Out This Field">
                             <div class="lds-spinner" id="idLoader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                            <button id="nextBtn" class="arrowBtn" disabled title="Please Fill Out This Field">
+                            <div id="nextBtn" class="arrowBtn" disabled title="Please Fill Out This Field">
                                 <i class="fa fa-arrow-right"></i>
-                            </button>
+                            </div>
 
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -33,7 +33,7 @@
                             <a id="submitBtn" class="arrowBtn display-none" disabled title="Please Fill Out This Field">
                                 <div><i class="fa fa-arrow-right"></i></div>
                             </a>
-                            
+
                             <!-- <button type="submit" id="submitBtn" class="arrowBtn display-none" disabled title="Please Fill Out This Field">
                                 <i class="fa fa-arrow-right"></i>
                             </button> -->
