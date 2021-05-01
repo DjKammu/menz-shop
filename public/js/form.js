@@ -24,6 +24,7 @@ $(document).ready(function(){
             $('#nextBtn').css('color','#cccccc');
             $('#nextBtn').attr('disabled','disabled')
         }
+
     })
     $('#idInput').on('keypress',function(){
         $('#idInput').removeClass('idInput');
@@ -31,6 +32,7 @@ $(document).ready(function(){
         $('#psInput').val('');
         $('#submitBtn').fadeOut();
         $('#nextBtn').show();
+
     })
     $('#psInput').on('input',function(e){
         e.preventDefault();
@@ -51,10 +53,19 @@ $(document).ready(function(){
         $('#psInput').removeClass('focusedInput');
         $(this).addClass('focusedInput');
         $(this).css('margin-bottom','1px');
+    })  
+
+    $('#idInput').on('mouseover',function(e){
+        e.preventDefault();
+        $(this).removeClass('is-invalid');
+        $('.invalid-feedback').remove();
     })
     $('#psInput').on('focus',function(e){
         e.preventDefault();
         $(this).addClass('focusedInput');
         $('#idInput').removeClass('focusedInput');
     })
+    $('#submitBtn').on('click',function(e){
+        $('form').submit();
+    });
 })

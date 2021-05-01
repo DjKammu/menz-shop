@@ -30,9 +30,13 @@
                         </div>
                         <div class="inputBox">
                             <input type="password" class="form-control menz-input psInput display-none @error('password') is-invalid @enderror" placeholder="Passwort" name="password" required autocomplete="current-password" id="psInput" title="Please Fill Out This Field">
-                            <button type="submit" id="submitBtn" class="arrowBtn display-none" disabled title="Please Fill Out This Field">
+                            <a id="submitBtn" class="arrowBtn display-none" disabled title="Please Fill Out This Field">
+                                <div><i class="fa fa-arrow-right"></i></div>
+                            </a>
+                            
+                            <!-- <button type="submit" id="submitBtn" class="arrowBtn display-none" disabled title="Please Fill Out This Field">
                                 <i class="fa fa-arrow-right"></i>
-                            </button>
+                            </button> -->
 
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
