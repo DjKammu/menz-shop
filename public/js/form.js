@@ -74,20 +74,20 @@ $(document).ready(function(){
         e.preventDefault();
         if($(this).val().length > 0){
           $('#continueBtn').removeAttr('disabled');
-          $('#forgotPassLabel').addClass('focusedInput');
+          $('#forgotPassLabel').addClass('forgotfocusedInput');
         }else{
           $('#continueBtn').attr('disabled','disabled')
-          $('#forgotPassLabel').removeClass('focusedInput');
+          $('#forgotPassLabel').removeClass('forgotfocusedInput');
         }
       })
       $('#forgotidInput').on('input',function(e){
         e.preventDefault();
         if($(this).val().length > 0){
           $('#idcontinueBtn').removeAttr('disabled');
-          $('#forgotidLabel').addClass('focusedInput');
+          $('#forgotidLabel').addClass('forgotfocusedInput');
         }else{
           $('#idcontinueBtn').attr('disabled','disabled')
-          $('#forgotidLabel').removeClass('focusedInput');
+          $('#forgotidLabel').removeClass('forgotfocusedInput');
         }
       })
 })
