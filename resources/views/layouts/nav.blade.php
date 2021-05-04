@@ -2,7 +2,7 @@
   <div class="menz-header-wrap">
     <div class="menz-logo-container">
        <a class="menz-brand" href="{{ url('/') }}">
-          <img src="images/logo-white.svg" alt="Menz Logo" class="img-fluid">
+          <img src="{{ asset('images/logo-white.svg') }}" alt="Menz Logo" class="img-fluid">
        </a>
     </div>
     <a class="menz-nav-item active" aria-current="page" href="">Rechnung</a>

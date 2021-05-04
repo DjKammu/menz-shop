@@ -325,7 +325,7 @@ h1.section-title, h1.forgot-title {
     font-family: 'SF Pro Display';
     font-size: 40px;
     line-height: 1.1;
-    font-weight: 600;
+    font-weight: 500;
     color: #1d1d1f;
 }
 h1.forgot-title {
@@ -422,26 +422,32 @@ a.menz-view::after {
     background: linear-gradient(#fff,#eee);
     border-color: #d9d9d9;
 }
-.wrap-input100 {
-  position: relative;
-}
-.input100 {
-    min-width: 360px;
+.form-element {
     position: relative;
-    border: 1px solid #d6d6d6;
-    border-radius: 4px;
-    height: 3.3em;
+}
+.form-textbox {
     font-size: 17px;
-    line-height: 1.23543;
     font-weight: 400;
     font-family: 'SF Pro Display';
-    background: hsla(0,0%,100%,.8);
+    display: inline-block;
+    box-sizing: border-box;
+    height: 3.3em;
     margin-bottom: 14px;
     padding-top: 18px;
     padding-left: 16px;
     padding-right: 16px;
+    color: #333;
+    text-align: left;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
 }
-.focus-input100 {
+.form-textbox:focus {
+    appearance: none;
+    border-color: #0070c9;
+    outline: 0;
+    box-shadow: 0 0 0 3px rgb(131 192 253 / 50%);
+}
+.form-textbox~.form-label {
     position: absolute;
     top: 18px;
     left: 17px;
@@ -450,11 +456,68 @@ a.menz-view::after {
     z-index: 1;
     transition-timing-function: ease-in;
     transition-duration: .125s;
-    pointer-events: none;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+.form-block-label, .form-label {
     font-size: 17px;
     line-height: 1.23543;
     font-weight: 400;
+    display: block;
+    position: relative;
+    vertical-align: top;
+    color: #333;
 }
+.form-textbox.form-textbox-entered~.form-label, .form-textbox:focus~.form-label, .form-textbox:valid[required]~.form-label, .form-textbox[placeholder]~.form-label {
+    font-size: 12px;
+    line-height: 1.75;
+    font-weight: 400;
+    top: 8px;
+}
+
+
+.button{
+font-size: 17px;
+line-height: 1.47059;
+font-weight: 400;
+font-family: 'SF Pro Display';
+background-color: #0070c9;
+background: linear-gradient(#42a1ec,#0070c9);
+border: 1px solid #07c;
+border-radius: 4px;
+color: #fff;
+cursor: pointer;
+display: inline-block;
+padding: 4px 20px;
+text-align: center;
+white-space: nowrap;
+}
+.button:hover{
+opacity: .9;
+}
+.button.disabled, .button:disabled {
+background-color: #0070c9;
+background: linear-gradient(#42a1ec,#0070c9);
+border-color: #07c;
+color: #fff;
+cursor: default;
+opacity: .3;
+}
+.focusedInput{
+font-size: 12px;
+line-height: 1.75;
+font-weight: 400;
+top: 8px !important;
+position: absolute;
+left: 17px;
+color: #888;
+padding: 0;
+z-index: 1;
+transition-timing-function: ease-in;
+transition-duration: .125s;
+}
+
+
 
 @media (max-width:767px) {
     .menz-header-wrap {

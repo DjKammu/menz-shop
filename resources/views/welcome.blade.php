@@ -50,6 +50,10 @@
                           <input type="checkbox" name="" id="remember_me" name="remember" {{ old('remember') ? 'checked' : '' }}>
                           Remember Me
                       </label>
+                      <div class="text-center no-access mb-2" >
+                        <a href="{{ route('password.request') }}" class="links">Forgotten your Kundennumer or Passwort?</a><br>
+                      </div>
+
                       <div class="text-center no-access" >
                         Noch keinen Zugang? <a href="#" class="links">Kontakt</a><br>
                       </div>

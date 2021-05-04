@@ -53,3 +53,5 @@ Route::get('/admin:install', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+
+Route::post('/password/email-kundennummer', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'sendKundennummerEmail'])->name('password.email-kundennummer');

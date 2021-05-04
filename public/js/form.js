@@ -68,4 +68,26 @@ $(document).ready(function(){
     $('#submitBtn').on('click',function(e){
         $('form').submit();
     });
+
+    
+    $('#forgotPassInput').on('input',function(e){
+        e.preventDefault();
+        if($(this).val().length > 0){
+          $('#continueBtn').removeAttr('disabled');
+          $('#forgotPassLabel').addClass('focusedInput');
+        }else{
+          $('#continueBtn').attr('disabled','disabled')
+          $('#forgotPassLabel').removeClass('focusedInput');
+        }
+      })
+      $('#forgotidInput').on('input',function(e){
+        e.preventDefault();
+        if($(this).val().length > 0){
+          $('#idcontinueBtn').removeAttr('disabled');
+          $('#forgotidLabel').addClass('focusedInput');
+        }else{
+          $('#idcontinueBtn').attr('disabled','disabled')
+          $('#forgotidLabel').removeClass('focusedInput');
+        }
+      })
 })

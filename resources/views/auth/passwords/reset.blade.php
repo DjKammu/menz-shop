@@ -1,11 +1,20 @@
 @extends('layouts.app')
 
+@include('layouts.nav')
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+
+<div class="menz-rechnung" id="rechnung">
+      <div class="container">
+        <div class="row justify-content-center">
+        <div class="col-md-8 menz-col pb-0">
+            <div class="row">
+              <h1 class="forgot-title">{{ __('Reset Password') }}</h1>
+                @if (session('status'))
+                      <div class="alert alert-success" role="alert">
+                          {{ session('status') }}
+                      </div>
+                  @endif
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}">
@@ -58,8 +67,10 @@
                         </div>
                     </form>
                 </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+    
+
 @endsection
