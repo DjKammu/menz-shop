@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    CONST DEFAULT_FIRST_LOGIN = 1;
+
     /**
      * The attributes that are mass assignable.
      *

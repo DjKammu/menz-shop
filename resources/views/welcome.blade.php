@@ -10,18 +10,25 @@
           <div class="row">
               <div class="col-md-12">
                 <div class="menz-formBox">
+                  <div class="alert alert-success" style="display:none;" id="alert-success" role="alert">
+                    </div>
                   <h2 class="formHeading text-center">Rechnung Menz Shop</h2>
+            
+                    
+          
                    <form method="POST" action="{{ route('login') }}">
                         @csrf
                       <div class="login-form">
                           <div class="inputBox">
-                            <input type="text" class="form-control menz-input @error('email') is-invalid @enderror" name="email" id="idInput" value="{{ old('email') }}" required placeholder="Kundennumer" autofocus autocomplete="email" title="Please Fill Out This Field">
+                            <input type="text" class="form-control menz-input @error('kundennummer') is-invalid @enderror" name="kundennummer" id="idInput" value="{{ old('kundennummer') }}" required placeholder="Kundennumer" autofocus autocomplete="kundennummer" title="Please Fill Out This Field">
                             <div class="lds-spinner" id="idLoader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
                             <div id="nextBtn" class="arrowBtn" disabled title="Please Fill Out This Field">
                                 <i class="fa fa-arrow-right"></i>
                             </div>
-
-                            @error('email')
+                            <span id="kundennummer-error" 
+                                class="invalid-feedback2" role="alert">
+                            </span>
+                            @error('kundennummer')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

@@ -3,16 +3,54 @@ $(document).ready(function(){
         e.preventDefault();
         $('#nextBtn').hide();
         $('#idLoader').addClass('opacityN');
-        setTimeout(() => {
+         firstLogin($('#idInput').val());
+    })
+    
+    function firstLogin(id){
+  
+      $.ajax({
+        url : '/first-login/'+id,
+        type : "get",
+        async: false,
+        success : function(res) {
+           if(res.msg == 0){
+                 setTimeout(() => {
+                    $('#idLoader').removeClass('opacityN');
+                    $('#idInput').addClass('idInput');
+                    $('#psInput').fadeIn();
+                    $('#psInput').focus();
+                    $('#submitBtn').fadeIn();
+                }, 2000);
+            }else{
+                 setTimeout(() => {
+                    $('#idLoader').removeClass('opacityN');
+                    $('#idInput').addClass('idInput');
+                    $('#alert-success').append('<strong>'+res+'</strong>');
+                    $('#alert-success').show();
+                    $('#nextBtn').fadeIn();
+
+                }, 2000);
+            }
+        }, 
+        error: function(res) {
+            setTimeout(() => {
             $('#idLoader').removeClass('opacityN');
             $('#idInput').addClass('idInput');
-            $('#psInput').fadeIn();
-            $('#psInput').focus();
-            $('#submitBtn').fadeIn();
-        }, 2000);
-    })
+            $('#kundennummer-error').append('<strong>'+res.responseJSON+'</strong>');
+            $('#kundennummer-error').css('color','#dc3545');
+            $('#kundennummer-error').show();
+            $('#nextBtn').fadeIn();
+          },2000);
+        }
+     });
+
+      
+    }
+
     $('#idInput').on('input',function(e){
         e.preventDefault();
+        $('#kundennummer-error').html('');
+        $('#alert-success').html('');
         if($(this).val().length > 0){
             $('#nextBtn').removeAttr('disabled');
             $('#nextBtn').css('border-color','#494949');

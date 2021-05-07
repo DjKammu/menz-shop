@@ -32,6 +32,8 @@ Route::get('/register',function(){
     return redirect('/');
 });
 
+Route::get('/first-login/{id}',[App\Http\Controllers\Auth\LoginController::class, 'firstLogin'])->name('first.login');
+
 Route::get('/linkstorage', function () {
     Artisan::call('storage:link');
     $exitCode = Artisan::call('storage:link', [] );

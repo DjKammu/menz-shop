@@ -18,7 +18,7 @@ class AddColumns extends Migration
              $table->timestamp('last_login')->nullable();
              $table->integer('login_attempt')->nullable();
              $table->tinyInteger('login_blocked')->nullable();
-             $table->tinyInteger('first_login')->nullable();
+             $table->tinyInteger('first_login')->default(1);
         });
     }
 
