@@ -40,7 +40,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*?[#?!@$%^&*-\]\[]).{8,}" title="Must contain at least one number and one uppercase and one special character  and at least 8 or more characters" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -56,6 +56,10 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
+                            <p>
+                            <b>Password must:</br></b>
+                            Use 8 or more characters with a mix of letters, numbers, and symbols.
+                            </p>
                         </div>
 
                         <div class="form-group row mb-0">
