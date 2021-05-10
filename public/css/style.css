@@ -33,7 +33,7 @@ body, p {
 .menz-logo {
     text-align: left;
     position: fixed;
-    width: 100px;
+    width: 125px;
     padding: 12px 0px 0px 16px;
 }
 .menz-bnr {
@@ -77,6 +77,14 @@ body, p {
     font-family: 'SF Pro Display';
     line-height: normal;
 } 
+.reset-title {
+    font-size: 32px;
+    font-weight: 600;
+}
+.pass-hint {
+    font-size: 14px;
+    
+}
 .menz-input {
     padding-right: 43px;
     border: 1px solid #d6d6d6;
@@ -312,9 +320,9 @@ body, p {
 .menz-rechnung .container, .menz-lieferschein .container {
     max-width: 980px;
 }
-.menz-profil .container {
+/* .menz-profil .container {
     max-width: 1010px;
-}
+} */
 .menz-col {
     padding: 1.5em 1.5em;
 }

@@ -9,7 +9,7 @@ $(document).ready(function(){
     function firstLogin(id){
   
       $.ajax({
-        url : '/first-login/'+id,
+        url : 'first-login/'+id,
         type : "get",
         async: false,
         success : function(res) {
@@ -128,4 +128,36 @@ $(document).ready(function(){
           $('#forgotidLabel').removeClass('forgotfocusedInput');
         }
       })
+
+      $('#resetemail').on('input',function(e){
+        e.preventDefault();
+        if($(this).val().length > 0){
+        //   $('#idcontinueBtn').removeAttr('disabled');
+          $('#resetemailLabel').addClass('forgotfocusedInput');
+        }else{
+        //   $('#idcontinueBtn').attr('disabled','disabled')
+          $('#resetemailLabel').removeClass('forgotfocusedInput');
+        }
+      })
+      $('#resetpass').on('input',function(e){
+        e.preventDefault();
+        if($(this).val().length > 0){
+        //   $('#idcontinueBtn').removeAttr('disabled');
+          $('#resetpassLabel').addClass('forgotfocusedInput');
+        }else{
+        //   $('#idcontinueBtn').attr('disabled','disabled')
+          $('#resetpassLabel').removeClass('forgotfocusedInput');
+        }
+      })
+      $('#resetconfirmpass').on('input',function(e){
+        e.preventDefault();
+        if($(this).val().length > 0){
+          $('#resetBtn').removeAttr('disabled');
+          $('#resetconfirmpassLabel').addClass('forgotfocusedInput');
+        }else{
+          $('#resetBtn').attr('disabled','disabled')
+          $('#resetconfirmpassLabel').removeClass('forgotfocusedInput');
+        }
+      })
+
 })
