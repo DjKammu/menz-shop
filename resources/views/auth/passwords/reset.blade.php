@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@include('layouts.nav')
-
 @section('content')
-
+<div class="menz-logo">
+       <img class="img-fluid" src="{{ asset('images/logo-blue.svg') }}" alt="Menz Logo">
+     </div>
 <section class="menz-bnr">
         <div class="container">
           <div class="row justify-content-center text-center">

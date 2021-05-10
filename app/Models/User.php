@@ -13,6 +13,12 @@ class User extends Authenticatable
 
     CONST DEFAULT_FIRST_LOGIN = 1;
 
+    CONST LOGIN_ATTEMPT = 3;
+
+    CONST LOGIN_BLOCK_HOURS = 8;
+
+    CONST BLOCKED_MSG  = 'You are account has been bloked. Please try after '.self::LOGIN_BLOCK_HOURS. ' Hours';
+
     /**
      * The attributes that are mass assignable.
      *

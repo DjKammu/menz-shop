@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Password;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Password;
+use App\Providers\RouteServiceProvider;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\User;
+use Carbon\Carbon;
+
 
 
 class LoginController extends Controller
@@ -82,33 +85,90 @@ class LoginController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    // public function login(Request $request)
-    // {
-    //     $this->validateLogin($request);
+    public function login(Request $request)
+    {
+        $this->validateLogin($request);
 
-    //     // If the class is using the ThrottlesLogins trait, we can automatically throttle
-    //     // the login attempts for this application. We'll key this by the username and
-    //     // the IP address of the client making these requests into this application.
-    //     // if (method_exists($this, 'hasTooManyLoginAttempts') &&
-    //     //     $this->hasTooManyLoginAttempts($request)) {
-    //     //     $this->fireLockoutEvent($request);
 
-    //     //     return $this->sendLockoutResponse($request);
-    //     // }
+        // If the class is using the ThrottlesLogins trait, we can automatically throttle
+        // the login attempts for this application. We'll key this by the username and
+        // the IP address of the client making these requests into this application.
+        // if (method_exists($this, 'hasTooManyLoginAttempts') &&
+        //     $this->hasTooManyLoginAttempts($request)) {
+        //     $this->fireLockoutEvent($request);
 
-    //     if ($this->attemptLogin($request)) {
-    //         return $this->sendLoginResponse($request);
-    //     }
+        //     return $this->sendLockoutResponse($request);
+        // }
 
-    //     $user = User::where($request->only($this->username()))->first();
+       $this->checkIsBlocked($request);
 
-    //     dd($user);
-    //     // If the login attempt was unsuccessful we will increment the number of attempts
-    //     // to login and redirect the user back to the login form. Of course, when this
-    //     // user surpasses their maximum number of attempts they will get locked out.
-    //     // $this->incrementLoginAttempts($request);
+        if ($this->attemptLogin($request)) {
+            return $this->sendLoginResponse($request);
+        }
 
-    //     return $this->sendFailedLoginResponse($request);
-    // }
+        $this->incrementLoginAttempts($request);
+
+        // If the login attempt was unsuccessful we will increment the number of attempts
+        // to login and redirect the user back to the login form. Of course, when this
+        // user surpasses their maximum number of attempts they will get locked out.
+        // $this->incrementLoginAttempts($request);
+
+        return $this->sendFailedLoginResponse($request);
+    }
+
+
+     /**
+     * Increment the login attempts for the user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
+    protected function incrementLoginAttempts(Request $request)
+    {
+        $user = User::where($request->only($this->username()))->first();
+        
+        if(!$user)  return;
+
+        $user->increment('login_attempt');
+
+        if($user->login_attempt == User::LOGIN_ATTEMPT){
+
+            $user->login_blocked = 1;
+            $user->last_login = Carbon::now();
+            $user->save();
+        
+        }
+    }
+   
+    /**
+     * Clear the login locks for the given user credentials.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
+    protected function clearLoginAttempts(Request $request)
+    {
+        $user = $request->user();
+        $user->login_attempt = 0;
+        $user->login_blocked = 0;
+        $user->last_login = Carbon::now();
+        $user->save();
+    }   
+
+
+    protected function checkIsBlocked(Request $request)
+    {
+        $user = User::where($request->only($this->username()))->where(
+                ['login_blocked' => 1]
+             )->where('last_login', '>', 
+            Carbon::now()->subHours(User::LOGIN_BLOCK_HOURS)->toDateTimeString()
+        )->exists();
+
+       if($user) 
+         throw ValidationException::withMessages([
+            $this->username() => User::BLOCKED_MSG,
+        ]);
+    }
+    
 
 }
