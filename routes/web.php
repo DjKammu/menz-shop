@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +34,7 @@ Route::get('/register',function(){
 
 Route::get('/first-login/{id}',[App\Http\Controllers\Auth\LoginController::class, 'firstLogin'])->name('first.login');
 
+
 Route::get('/linkstorage', function () {
     Artisan::call('storage:link');
     $exitCode = Artisan::call('storage:link', [] );
@@ -55,5 +56,8 @@ Route::get('/admin:install', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+
+Route::get('/rechnung', [App\Http\Controllers\HomeController::class,'rechnung'])
+        ->name('rechnung');
 
 Route::post('/password/email-kundennummer', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'sendKundennummerEmail'])->name('password.email-kundennummer');

@@ -50,7 +50,7 @@ class LoginController extends Controller
      $user = User::where('kundennummer',$id)->first();
       
      if (!$user) {
-         $message = 'Kundennummer is isvalid.';
+         $message = 'Kundennummer is invalid.';
          return  \Response::json($message, 404);
      } elseif ($user->first_login == User::DEFAULT_FIRST_LOGIN) {
         

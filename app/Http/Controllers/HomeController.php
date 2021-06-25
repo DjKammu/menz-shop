@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Belege;
 use Auth;
 
 class HomeController extends Controller
@@ -38,5 +39,13 @@ class HomeController extends Controller
         $user = Auth::user();
 
         return view('profile',compact('user'));
+    }
+
+    public function rechnung(){
+        $user =  Auth::user();
+
+        $beleges = $user->beleges()->paginate( (new Belege())->perPage);
+
+        return view('beleges',compact('beleges'));
     }
 }
