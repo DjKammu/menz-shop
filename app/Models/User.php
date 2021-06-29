@@ -19,6 +19,8 @@ class User extends Authenticatable
 
     CONST BLOCKED_MSG  = 'You are account has been bloked. Please try after '.self::LOGIN_BLOCK_HOURS. ' Hours';
 
+    protected $table = 'Login';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -52,6 +54,6 @@ class User extends Authenticatable
 
     public function beleges(){
      
-       return $this->hasMany(Belege::class,'Kundennummer','kundennummer');
+       return $this->hasMany(Belege::class,'Kundennummer','Kundennummer');
     }
 }

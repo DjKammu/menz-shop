@@ -9,5 +9,7 @@ class Belege extends Model
 {
     use HasFactory;
 
+    protected $table = 'Belege';
+
     protected $perPage = 20;
 }

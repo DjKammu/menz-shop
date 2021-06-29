@@ -129,11 +129,11 @@ class LoginController extends Controller
         
         if(!$user)  return;
 
-        $user->increment('login_attempt');
+        $user->increment('Loginattempt');
 
-        if($user->login_attempt == User::LOGIN_ATTEMPT){
+        if($user->Loginattempt == User::LOGIN_ATTEMPT){
 
-            $user->login_blocked = 1;
+            $user->Loginblocked = 1;
             $user->last_login = Carbon::now();
             $user->save();
         
@@ -149,8 +149,8 @@ class LoginController extends Controller
     protected function clearLoginAttempts(Request $request)
     {
         $user = $request->user();
-        $user->login_attempt = 0;
-        $user->login_blocked = 0;
+        $user->Loginattempt = 0;
+        $user->Loginblocked = 0;
         $user->last_login = Carbon::now();
         $user->save();
     }   
@@ -159,7 +159,7 @@ class LoginController extends Controller
     protected function checkIsBlocked(Request $request)
     {
         $user = User::where($request->only($this->username()))->where(
-                ['login_blocked' => 1]
+                ['Loginblocked' => 1]
              )->where('last_login', '>', 
             Carbon::now()->subHours(User::LOGIN_BLOCK_HOURS)->toDateTimeString()
         )->exists();
