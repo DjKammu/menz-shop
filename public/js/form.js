@@ -160,4 +160,36 @@ $(document).ready(function(){
         }
       })
 
+      $('#searchDeveloper').on('click', function(e) {
+          e.preventDefault();
+          $('.headerSearchBar').removeClass('animate__animated animate__slideOutUp');
+          $('.customInputGroup').removeClass('animate__slideOutUp');
+          $('.customInputGroup').addClass('animate__slideInRight');
+          $('#hideSearchBox').fadeIn();
+          $('.headerSearchBar').fadeIn();
+          setTimeout(() => {
+              $('.developerSearchInput').focus();
+          }, 800);
+      })
+      $('#hideSearchBox').on('click', function(e) {
+          e.preventDefault();
+          $('.customInputGroup').removeClass('animate__slideInRight');
+          $('.customInputGroup').addClass('animate__slideOutUp');
+          $('.headerSearchBar').addClass('animate__animated animate__slideOutUp');
+
+      })
+
+      $('.search').keypress(function (e) {
+       var key = e.which;
+       let search = $(this).val();
+       
+       if(key == 13 && !search){
+            alert('Enter to search something');
+            return;
+       }  
+       else if(key == 13){
+          window.location.href = '/search/'+search;
+        }
+      });  
+
 })

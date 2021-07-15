@@ -60,4 +60,7 @@ Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])-
 Route::get('/rechnung', [App\Http\Controllers\HomeController::class,'rechnung'])
         ->name('rechnung');
 
+Route::get('/search/{slug}', [App\Http\Controllers\HomeController::class,'search'])
+        ->name('search');
+
 Route::post('/password/email-kundennummer', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'sendKundennummerEmail'])->name('password.email-kundennummer');

@@ -9,6 +9,9 @@ use Auth;
 
 class HomeController extends Controller
 {
+    CONST INVOICE = 'Rechnung';
+
+    CONST DOC_TYPE = 'Auftrag';
     /**
      * Create a new controller instance.
      *
@@ -47,5 +50,19 @@ class HomeController extends Controller
         $beleges = $user->beleges()->paginate( (new Belege())->perPage);
 
         return view('beleges',compact('beleges'));
+    }
+
+    public function search(Request $request,$search = '' ){
+
+        $user =  Auth::user();
+
+        $beleges = $user->beleges()
+                   ->where('Volltext', 'like', "%$search%")
+                   ->paginate( (new Belege())->perPage);
+
+        $rechnung = $beleges->where('Belegart',self::INVOICE)->all();
+        $lieferschein = $beleges->where('Belegart',self::DOC_TYPE)->all();
+
+        return view('search',compact('search','beleges','lieferschein','rechnung'));
     }
 }
