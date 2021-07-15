@@ -13,7 +13,7 @@
           <div class="col-md-6 menz-col"> 
               <div class="menz-info">
                 <h5 class="profil-title">Kundennummer</h5>
-                <p class="profile-text">0123456</p>
+                <p class="profile-text">{{ $user->Kundennummer }}</p>
               </div>
               <div class="menz-info">
                  <h5 class="profil-title">Name</h5>
