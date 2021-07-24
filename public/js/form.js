@@ -160,26 +160,26 @@ $(document).ready(function(){
         }
       })
 
-      $('#searchDeveloper').on('click', function(e) {
-          e.preventDefault();
-          $('.headerSearchBar').removeClass('animate__animated animate__slideOutUp');
-          $('.customInputGroup').removeClass('animate__slideOutUp');
-          $('.customInputGroup').addClass('animate__slideInRight');
-          $('#hideSearchBox').fadeIn();
-          $('.headerSearchBar').fadeIn();
-          setTimeout(() => {
-              $('.developerSearchInput').focus();
-          }, 800);
-      })
-      $('#hideSearchBox').on('click', function(e) {
-          e.preventDefault();
-          $('.customInputGroup').removeClass('animate__slideInRight');
-          $('.customInputGroup').addClass('animate__slideOutUp');
-          $('.headerSearchBar').addClass('animate__animated animate__slideOutUp');
+       $('#menz-search, #menz-search-mobile').on('click', function(e) {
+            e.preventDefault();
+            $('.headerSearchBar').removeClass('animate__animated animate__slideOutUp');
+            $('.customInputGroup').removeClass('animate__slideOutUp');
+            $('.customInputGroup').addClass('animate__slideInRight');
+            $('#hideSearchBox').fadeIn();
+            $('.headerSearchBar').fadeIn();
+            setTimeout(() => {
+                $('.developerSearchInput').focus();
+            }, 800);
+        })
+        $('#hideSearchBox, #hideSearchBoxMobile').on('click', function(e) {
+            e.preventDefault();
+            $('.customInputGroup').removeClass('animate__slideInRight');
+            $('.customInputGroup').addClass('animate__slideOutUp');
+            $('.headerSearchBar').addClass('animate__animated animate__slideOutUp');
 
-      })
+        })
 
-      $('.search').keypress(function (e) {
+      $('.developerSearchInput').keypress(function (e) {
        var key = e.which;
        let search = $(this).val();
        
@@ -191,5 +191,13 @@ $(document).ready(function(){
           window.location.href = '/search/'+search;
         }
       });  
+
+      $('body').on('click','li.nav-item.dropdown',function(){ 
+       $('.menz-dropdown-menu').toggle();
+      });
+
+      $('body').on('click','button.navbar-toggler.menz-toggler',function(){ 
+       $('#navbarNavDropdown').slideToggle();
+      });
 
 })

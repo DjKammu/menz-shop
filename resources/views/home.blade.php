@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
-@include('layouts.nav')
-
 @section('content')
 
+@include('layouts.nav')
 <div class="menz-rechnung" id="rechnung">
       <div class="container">
         <div class="row">
@@ -17,7 +16,7 @@
           <div class="col-md-6 menz-col">  
               <p class="section-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
               <p class="position-relative">
-                <a class="menz-more" href="rechnung.html">View all Rechnung</a>
+                <a class="menz-more" href="{{ route('belege','rechnung')}}">View all Rechnung</a>
               </p>
           </div>
           <div class="col-md-6 menz-col">  
@@ -84,7 +83,7 @@
           <div class="col-md-6 menz-col">  
               <p class="section-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
               <p class="position-relative">
-                <a class="menz-more" href="lieferschein.html">View all lieferschein</a>
+                <a class="menz-more" href="{{ route('belege','lieferschein')}}">View all lieferschein</a>
               </p>
           </div>
           <div class="col-md-6 menz-col">  

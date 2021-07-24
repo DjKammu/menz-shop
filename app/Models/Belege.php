@@ -12,4 +12,23 @@ class Belege extends Model
     protected $table = 'Belege';
 
     protected $perPage = 20;
+
+    protected CONST MENU_COUNT = 1;
+
+    static public function getMenus(){
+
+    	$userBeleges = auth()->user()->beleges();
+
+    	$menus = $userBeleges->select('Belegart', \DB::raw('count(*) as count'))
+    	         ->groupBy('Belegart')->orderBy('count','DESC')
+    	         ->pluck('Belegart')->toArray();
+
+         $dMenus = [];
+    	 if(count($menus) > self::MENU_COUNT){
+            $dMenus = array_slice($menus, self::MENU_COUNT, count($menus));
+            $menus = array_slice($menus, 0,self::MENU_COUNT);
+    	 }        
+
+    	 return [$menus,$dMenus];
+    }
 }

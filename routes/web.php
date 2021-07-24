@@ -57,8 +57,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 
-Route::get('/rechnung', [App\Http\Controllers\HomeController::class,'rechnung'])
-        ->name('rechnung');
+Route::get('/{slug}', [App\Http\Controllers\HomeController::class,'belege'])
+        ->name('belege');
 
 Route::get('/search/{slug}', [App\Http\Controllers\HomeController::class,'search'])
         ->name('search');

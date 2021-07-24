@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
-@include('layouts.nav')
-
 @section('content')
 
+@include('layouts.nav')
     <div class="menz-rechnung menz-profil">
       <div class="container">
         <div class="row">

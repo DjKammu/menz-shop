@@ -44,10 +44,16 @@ class HomeController extends Controller
         return view('profile',compact('user'));
     }
 
-    public function rechnung(){
+    public function belege(Request $request,$slug){
         $user =  Auth::user();
+     
+        $beleges = $user->beleges()
+                  ->whereBelegart(ucfirst($slug));
 
-        $beleges = $user->beleges()->paginate( (new Belege())->perPage);
+        if($request->filled('d')){
+            $beleges->orderBy('Dateidatum',$request->d);
+        }          
+        $beleges = $beleges->paginate( (new Belege())->perPage);
 
         return view('beleges',compact('beleges'));
     }
@@ -60,9 +66,17 @@ class HomeController extends Controller
                    ->where('Volltext', 'like', "%$search%")
                    ->paginate( (new Belege())->perPage);
 
-        $rechnung = $beleges->where('Belegart',self::INVOICE)->all();
-        $lieferschein = $beleges->where('Belegart',self::DOC_TYPE)->all();
+         $dBeleges = [];
+        foreach (@$beleges as $key => $belege) {
+             $dBeleges[$belege['Belegart']][] = $belege;
+         }           
 
-        return view('search',compact('search','beleges','lieferschein','rechnung'));
+        @array_multisort(array_map('count', $dBeleges), SORT_DESC, $dBeleges);
+
+       // $rechnung = $beleges->where('Belegart',self::INVOICE)->all();
+        //$lieferschein = $beleges->where('Belegart',self::DOC_TYPE)->all();
+
+        return view('search',compact('search','beleges','dBeleges'));
     }
+
 }
