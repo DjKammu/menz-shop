@@ -13,7 +13,7 @@ class Belege extends Model
 
     protected $perPage = 20;
 
-    protected CONST MENU_COUNT = 1;
+    protected CONST MENU_COUNT = 4;
 
     static public function getMenus(){
 
