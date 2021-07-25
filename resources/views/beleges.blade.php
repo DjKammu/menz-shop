@@ -44,8 +44,8 @@
                          <tr>
                           <td>{{ \Carbon\Carbon::parse($belege->Dateidatum)->format('d-m-Y') }}</td>
                           <td>{{  $belege->Belegart }}</td>
-                          <td> <a href="" target="_blank">Ansicht</a> </td>
-                          <td> <a href="" target="_blank">Herunterladen</a> </td>
+                          <td> <a href="{{ route('view',['id' => $belege->Belegnummer] )}}" target="_blank">Ansicht</a> </td>
+                          <td> <a href="{{ route('download',['id' => $belege->Belegnummer] )}}" target="_blank">Herunterladen</a> </td>
                         </tr>
                             @endforeach
 

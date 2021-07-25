@@ -79,4 +79,39 @@ class HomeController extends Controller
         return view('search',compact('search','beleges','dBeleges'));
     }
 
+
+    public function download(Request $request,$id ){
+
+        $user =  Auth::user();
+
+        $file = @$user->beleges()
+                   ->where('Belegnummer', $id)
+                   ->pluck('Binaerdaten')->first();
+
+        header("Content-length: ".strlen($file));
+        header("Content-type: application/pdf");
+        header("Cache-Control: no-cache");
+        header("Pragma: no-cache");
+        header("Content-Disposition: attachment; filename=".now().$id.'.pdf');
+        echo $file;
+        exit();
+            
+    }
+
+    public function view(Request $request,$id ){
+
+        $user =  Auth::user();
+
+        $file = @$user->beleges()
+                   ->where('Belegnummer', $id)
+                   ->pluck('Binaerdaten')->first();
+        header("Content-length: ".strlen($file));
+        header("Content-type: application/pdf");
+        header("Cache-Control: no-cache");
+        header("Pragma: no-cache");
+        echo $file;
+        exit();
+
+    }
+
 }

@@ -63,4 +63,10 @@ Route::get('/{slug}', [App\Http\Controllers\HomeController::class,'belege'])
 Route::get('/search/{slug}', [App\Http\Controllers\HomeController::class,'search'])
         ->name('search');
 
+Route::get('/download/{id}', [App\Http\Controllers\HomeController::class,'download'])
+        ->name('download');
+
+Route::get('/view/{id}', [App\Http\Controllers\HomeController::class,'view'])
+        ->name('view');
+
 Route::post('/password/email-kundennummer', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'sendKundennummerEmail'])->name('password.email-kundennummer');
