@@ -51,8 +51,8 @@
                            <tr>
                             <td>{{ \Carbon\Carbon::parse($belege->Dateidatum)->format('d-m-Y') }}</td>
                             <td>{{  $belege->Belegart }}</td>
-                            <td> <a href="" target="_blank">Ansicht</a> </td>
-                            <td> <a href="data:application/pdf;base64,<?php echo base64_encode($belege->Binaerdaten) ?>" target="_blank" download>Herunterladen</a> </td>
+                            <td> <a href="{{ route('view',['id' => $belege->Belegnummer] )}}" target="_blank">Ansicht</a> </td>
+                            <td> <a href="{{ route('download',['id' => $belege->Belegnummer] )}}" target="_blank">Herunterladen</a> </td>
                           </tr>
                               @endforeach
 
@@ -78,8 +78,8 @@
                            <tr>
                             <td>{{ \Carbon\Carbon::parse($belege->Dateidatum)->format('d-m-Y') }}</td>
                             <td>{{  $belege->Belegart }}</td>
-                            <td> <a href="{{ route('view',$belege->id)}}" target="_blank">Ansicht</a> </td>
-                            <td> <a href="{{ route('download',$belege->id)}}" target="_blank">Herunterladen</a> </td>
+                            <td> <a href="{{ route('view',['id' => $belege->Belegnummer] )}}" target="_blank">Ansicht</a> </td>
+                          <td> <a href="{{ route('download',['id' => $belege->Belegnummer] )}}" target="_blank">Herunterladen</a> </td>
                           </tr>
                               @endforeach
 
