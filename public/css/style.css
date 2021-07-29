@@ -820,7 +820,19 @@ tr:nth-child(even) {
     outline: 0;
 }
 
+.mobile-more{
+    display: none;
+}
+
 @media (max-width:991px) {
+    
+    li.nav-item.dropdown{
+        display: none;
+    }
+    .mobile-more{
+        display: block;
+    }
+
     .menz-header {
         max-height: none;
     }

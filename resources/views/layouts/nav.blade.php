@@ -71,7 +71,19 @@
                            @endforeach
 
                         </div>
-              </li>
+                </li>
+
+
+                @foreach($dMenus as $menu)
+                    
+                   <li class="nav-item mobile-more">
+                        <a class="nav-link menz-nav-item" href="{{ route('belege',Str::lower($menu))}}">
+                    {{ $menu}}
+                  </a>
+                    </li>
+
+                 @endforeach
+
 
                @endif     
 

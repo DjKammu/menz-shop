@@ -41,6 +41,7 @@
                                 <tr class="menz-table-row">
                                 <th scope="col">Dateidatum</th>
                                 <th scope="col">Belegart</th>
+                                <th scope="col">Belegnummer</th>
                                 <th scope="col">Ansicht</th>
                                 <th scope="col">Herunterladen</th>
                                 </tr>
@@ -50,7 +51,8 @@
 
                            <tr>
                             <td>{{ \Carbon\Carbon::parse($belege->Dateidatum)->format('d-m-Y') }}</td>
-                            <td>{{  $belege->Belegart }}</td>
+                            <td class="menz-{{ \Str::lower($belege->Belegart) }}">{{  $belege->Belegart }}</td>
+                            <td>{{  $belege->Belegnummer }}</td>
                             <td> <a href="{{ route('view',['id' => $belege->Belegnummer] )}}" target="_blank">Ansicht</a> </td>
                             <td> <a href="{{ route('download',['id' => $belege->Belegnummer] )}}" target="_blank">Herunterladen</a> </td>
                           </tr>
@@ -68,6 +70,7 @@
                                 <tr class="menz-table-row">
                                 <th scope="col">Dateidatum</th>
                                 <th scope="col">Belegart</th>
+                                <th scope="col">Belegnummer</th>
                                 <th scope="col">Ansicht</th>
                                 <th scope="col">Herunterladen</th>
                                 </tr>
@@ -76,8 +79,9 @@
                           @foreach(@$dBelege as $belege)
 
                            <tr>
-                            <td>{{ \Carbon\Carbon::parse($belege->Dateidatum)->format('d-m-Y') }}</td>
-                            <td>{{  $belege->Belegart }}</td>
+                            <td>{{ \Carbon\Carbon::parse($belege->Dateidatum)->format('d.m.Y') }}</td>
+                            <td class="menz-{{ Str::lower($belege->Belegart)}}">{{  $belege->Belegart }}</td>
+                            <td>{{  $belege->Belegnummer }}</td>
                             <td> <a href="{{ route('view',['id' => $belege->Belegnummer] )}}" target="_blank">Ansicht</a> </td>
                           <td> <a href="{{ route('download',['id' => $belege->Belegnummer] )}}" target="_blank">Herunterladen</a> </td>
                           </tr>

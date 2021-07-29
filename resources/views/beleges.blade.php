@@ -20,8 +20,8 @@
                     
                     <select style="width: auto;" onchange="return window.location.href='{{ url(request()->slug)}}?d='+this.value" name="orderBy" class="form-control">
                       <option value="">Dateidatum auswählen</option>
-                      <option value="DESC" {{ @request()->d == 'DESC' ? 'selected' : ''}}>Dateidatum DESC</option>
-                      <option value="ASC" {{ @request()->d == 'ASC' ? 'selected' : ''}}>Dateidatum ASC</option>
+                      <option value="DESC" {{ @request()->d == 'DESC' ? 'selected' : ''}}>Dateidatum absteigend</option>
+                      <option value="ASC" {{ @request()->d == 'ASC' ? 'selected' : ''}}>Dateidatum aufsteigend</option>
                     </select> 
 
                   </div>
@@ -33,6 +33,7 @@
                         <tr class="menz-table-row">
                           <th scope="col">Dateidatum</th>
                           <th scope="col">Belegart</th>
+                          <th scope="col">Belegnummer</th>
                           <th scope="col">Ansicht</th>
                           <th scope="col">Herunterladen</th>
                         </tr>
@@ -42,8 +43,9 @@
                          @foreach(@$beleges as $belege)
 
                          <tr>
-                          <td>{{ \Carbon\Carbon::parse($belege->Dateidatum)->format('d-m-Y') }}</td>
-                          <td>{{  $belege->Belegart }}</td>
+                          <td>{{ \Carbon\Carbon::parse($belege->Dateidatum)->format('d.m.Y') }}</td>
+                          <td class="menz-{{ \Str::lower($belege->Belegart) }}"><span>{{  $belege->Belegart }}</span></td>
+                          <td>{{  $belege->Belegnummer }}</td>
                           <td> <a href="{{ route('view',['id' => $belege->Belegnummer] )}}" target="_blank">Ansicht</a> </td>
                           <td> <a href="{{ route('download',['id' => $belege->Belegnummer] )}}" target="_blank">Herunterladen</a> </td>
                         </tr>
