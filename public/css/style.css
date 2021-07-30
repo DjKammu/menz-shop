@@ -902,6 +902,7 @@ nav.flex.items-center.justify-between {
     margin: 50px 0 !important;
 }
 .hidden.sm\:flex-1.sm\:flex.sm\:items-center.sm\:justify-between {
+    display: none;
     margin-top: 20px;
 }
 
