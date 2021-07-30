@@ -895,7 +895,7 @@ tr:nth-child(even) {
 }
 
 / Pagination CSS /
-.shadow-sm.rounded-md {
+.shadow-sm {
     display: none !important;
 }
 nav.flex.items-center.justify-between {
