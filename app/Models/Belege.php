@@ -16,6 +16,11 @@ class Belege extends Model
     protected CONST MENU_COUNT = 4;
 
     static public function getMenus(){
+        
+         $menus = $dMenus = [];
+        if(!auth()->check()){
+            return [$menus,$dMenus];
+        }
 
     	$userBeleges = auth()->user()->beleges();
 
@@ -23,7 +28,7 @@ class Belege extends Model
     	         ->groupBy('Belegart')->orderBy('count','DESC')
     	         ->pluck('Belegart')->toArray();
 
-         $dMenus = [];
+       
     	 if(count($menus) > self::MENU_COUNT){
             $dMenus = array_slice($menus, self::MENU_COUNT, count($menus));
             $menus = array_slice($menus, 0,self::MENU_COUNT);
