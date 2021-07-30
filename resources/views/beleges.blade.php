@@ -31,7 +31,13 @@
                     <table class="table table-striped menz-table">
                       <thead>
                         <tr class="menz-table-row">
-                          <th scope="col">Dateidatum</th>
+                        <th scope="col" class="menz-date-filter">
+                            Dateidatum                    
+                            <a class="d-none d-md-inline-block" onclick="return window.location.href='{{ url(request()->slug)}}?d=ASC'"  href="javascript:void(0)">
+                              <i class="fa fa-caret-up"></i></a>
+                            <a class="d-none d-md-inline-block" onclick="return window.location.href='{{ url(request()->slug)}}?d=DESC'" href="javascript:void(0)">
+                              <i class="fa fa-caret-down"></i></a>
+                        </th>
                           <th scope="col">Belegart</th>
                           <th scope="col">Belegnummer</th>
                           <th scope="col">Ansicht</th>
@@ -44,7 +50,7 @@
 
                          <tr>
                           <td>{{ \Carbon\Carbon::parse($belege->Dateidatum)->format('d.m.Y') }}</td>
-                          <td class="menz-{{ \Str::lower($belege->Belegart) }}"><span>{{  $belege->Belegart }}</span></td>
+                          <td class="menz-cat-{{ \Str::lower($belege->Belegart) }}"><span>{{  $belege->Belegart }}</span></td>
                           <td>{{  $belege->Belegnummer }}</td>
                           <td> <a href="{{ route('view',['id' => $belege->Belegnummer] )}}" target="_blank">Ansicht</a> </td>
                           <td> <a href="{{ route('download',['id' => $belege->Belegnummer] )}}" target="_blank">Herunterladen</a> </td>

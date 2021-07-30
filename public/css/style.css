@@ -19,7 +19,10 @@ body h6 {
     padding: 0;
     font-family: 'SF Pro Display';
 }
-
+a {
+    color: #06c;
+    text-decoration: none;
+}
 body,
 p {
     color: #1d1d1f;
@@ -820,8 +823,73 @@ tr:nth-child(even) {
     outline: 0;
 }
 
-.mobile-more{
+.mobile-more {
     display: none;
+}
+
+.menz-date-filter a {
+    color: #fff !important;
+}
+.menz-date-filter a i {
+    position: absolute; 
+    margin-left: 10px;
+}
+.menz-date-filter a i.fa-caret-up {
+    top: 15%;
+}
+.menz-date-filter a i.fa-caret-down {
+    bottom: 15%;
+}
+.menz-cat-auftrag span, .menz-cat-stornorechnung span, .menz-cat-rechnung span, .menz-cat-angebot span, .menz-cat-barverkauf span, .menz-cat-auftrags-storno span, .menz-cat-bar-storno span, .menz-cat-lieferschein span, .menz-cat-rücklieferschein span, .menz-cat-gutschrift span, .menz-cat-sofortrechnung span, .menz-cat-direktrechnung span {
+    color: #fff;
+    padding: 3px 15px;
+    border-radius: 30px;
+}
+.menz-cat-auftrag span {
+    background: #38c49f;
+}
+.menz-cat-stornorechnung span {
+    background: #28aeeb;
+}
+
+.menz-cat-rechnung span {
+    background: #e44e98;
+}
+
+.menz-cat-angebot span {
+    background: #f29e00;
+}
+
+.menz-cat-barverkauf span {
+    background: #a260dc;
+}
+
+.menz-cat-auftrags-storno span {
+    background: #f33551;
+}
+
+.menz-cat-bar-storno span {
+    background: #69cc71;
+}
+
+.menz-cat-lieferschein span {
+    background: #fe8faf;
+}
+
+.menz-cat-rücklieferschein span {
+    background: #ff9667;
+}
+
+.menz-cat-gutschrift span {
+    background: #d26ec6;
+}
+
+.menz-cat-sofortrechnung span {
+    background: #9185db;
+}
+
+.menz-cat-direktrechnung span {
+    background: #e2b1ce;
 }
 
 @media (max-width:991px) {
@@ -906,13 +974,15 @@ tr:nth-child(even) {
             content: "Belegart";
          }
         .menz-table td:nth-of-type(3):before { 
-            content: "Ansicht"; 
+            content: "Belegnummer"; 
         }
         .menz-table td:nth-of-type(4):before { 
+            content: "Ansicht"; 
+        }
+        .menz-table td:nth-of-type(5):before { 
             content: "Herunterladen"; 
         }
         .searchInputBox {
             max-width: 90%;
         }
 }
-

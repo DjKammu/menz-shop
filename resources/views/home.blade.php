@@ -50,8 +50,8 @@
                           @foreach(@$beleges as $belege)
 
                            <tr>
-                            <td>{{ \Carbon\Carbon::parse($belege->Dateidatum)->format('d-m-Y') }}</td>
-                            <td class="menz-{{ \Str::lower($belege->Belegart) }}">{{  $belege->Belegart }}</td>
+                            <td>{{ \Carbon\Carbon::parse($belege->Dateidatum)->format('d.m.Y') }}</td>
+                            <td class="menz-cat-{{ \Str::lower($belege->Belegart) }}"><span>{{  $belege->Belegart }}</span></td>
                             <td>{{  $belege->Belegnummer }}</td>
                             <td> <a href="{{ route('view',['id' => $belege->Belegnummer] )}}" target="_blank">Ansicht</a> </td>
                             <td> <a href="{{ route('download',['id' => $belege->Belegnummer] )}}" target="_blank">Herunterladen</a> </td>
@@ -80,7 +80,7 @@
 
                            <tr>
                             <td>{{ \Carbon\Carbon::parse($belege->Dateidatum)->format('d.m.Y') }}</td>
-                            <td class="menz-{{ Str::lower($belege->Belegart)}}">{{  $belege->Belegart }}</td>
+                            <td class="menz-cat-{{ Str::lower($belege->Belegart)}}"><span>{{  $belege->Belegart }}</span></td>
                             <td>{{  $belege->Belegnummer }}</td>
                             <td> <a href="{{ route('view',['id' => $belege->Belegnummer] )}}" target="_blank">Ansicht</a> </td>
                           <td> <a href="{{ route('download',['id' => $belege->Belegnummer] )}}" target="_blank">Herunterladen</a> </td>
