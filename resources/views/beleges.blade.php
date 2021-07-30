@@ -16,7 +16,7 @@
                           </div>
                       </div>
                   </div>
-                  <div class="col-md-12 menz-col pb-0 pull-right">
+                  <div class="col-md-12 menz-col pb-0 pull-right mobile-more">
                     
                     <select style="width: auto;" onchange="return window.location.href='{{ url(request()->slug)}}?d='+this.value" name="orderBy" class="form-control">
                       <option value="">Dateidatum auswählen</option>

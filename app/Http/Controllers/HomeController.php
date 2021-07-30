@@ -29,7 +29,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user =  Auth::user();
+
+        $beleges = $user->beleges()
+                   //->where('Volltext', 'like', "%$search%")
+                   ->paginate( (new Belege())->perPage);
+
+         $dBeleges = [];
+        foreach (@$beleges as $key => $belege) {
+             $dBeleges[$belege['Belegart']][] = $belege;
+         }           
+
+        @array_multisort(array_map('count', $dBeleges), SORT_DESC, $dBeleges);
+
+       // $rechnung = $beleges->where('Belegart',self::INVOICE)->all();
+        //$lieferschein = $beleges->where('Belegart',self::DOC_TYPE)->all();
+
+        return view('home',compact('beleges','dBeleges'));
+        //return view('home');
     }
 
     /**

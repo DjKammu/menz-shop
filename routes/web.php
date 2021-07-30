@@ -19,10 +19,13 @@ Auth::routes();
 Route::get('/', function () {
 
     if (Auth::user()) { 
-        return redirect('/home');
+
+         return (new HomeController)->index();
+
+        //return redirect('/home');
     } 
     return view('welcome');
-});
+}); 
 
 Route::get('/login',function(){
     return redirect('/');
