@@ -58,7 +58,7 @@
                           Remember Me
                       </label>
                       <div class="text-center no-access mb-2" >
-                        <a href="{{ route('password.request') }}" class="links">Forgotten your Kundennumer or Passwort?</a><br>
+                        <a href="{{ route('password.request') }}" class="links">Kundennummer oder Passwort vergessen</a><br>
                       </div>
 
                       <div class="text-center no-access" >
