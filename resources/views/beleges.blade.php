@@ -29,7 +29,7 @@
                     <div class="col-md-12 menz-col pb-0">
 
                     <table class="table table-striped menz-table">
-                      <thead>
+                     <thead class="position-relative">
                         <tr class="menz-table-row">
                         <th scope="col" class="menz-date-filter">
                             Dateidatum                    
