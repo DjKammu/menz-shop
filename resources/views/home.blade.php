@@ -22,6 +22,23 @@
                         </svg>
                     </span>
                 </div> -->
+
+                <div class="col-md-12 menz-col pb-0 pull-right mobile-more">
+                    
+                    <select style="width: auto;" onchange="return window.location.href='{{ url('/') }}?d='+this.value" name="orderBy" class="form-control">
+                      <option value="">Dateidatum auswählen</option>
+                      <option value="DESC" {{ @request()->d == 'DESC' ? 'selected' : ''}}>Dateidatum absteigend</option>
+                      <option value="ASC" {{ @request()->d == 'ASC' ? 'selected' : ''}}>Dateidatum aufsteigend</option>
+                    </select> 
+
+                    <select style="width: auto;" onchange="return window.location.href='{{ url('/')}}?b='+this.value" name="orderBy" class="form-control">
+                      <option value="">Belegnummer auswählen</option>
+                      <option value="DESC" {{ @request()->d == 'DESC' ? 'selected' : ''}}>Belegnummer absteigend</option>
+                      <option value="ASC" {{ @request()->d == 'ASC' ? 'selected' : ''}}>Belegnummer aufsteigend</option>
+                    </select> 
+
+                  </div>
+
                 <nav class="mt-2 mt-md-5">
                     <div class="nav nav-tabs menz-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="tab-all" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">All</button>
@@ -37,11 +54,23 @@
                 <div class="tab-content mt-4" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="tab-all">
                         <table class="table table-striped menz-table">
-                            <thead>
+                            <thead class="position-relative">
                                 <tr class="menz-table-row">
-                                <th scope="col">Dateidatum</th>
+                                 <th scope="col" class="menz-date-filter">
+                                    Dateidatum                    
+                                    <a class="d-none d-md-inline-block" onclick="return window.location.href='{{ url('/') }}?d=ASC'"  href="javascript:void(0)">
+                                      <i class="fa fa-caret-up"></i></a>
+                                    <a class="d-none d-md-inline-block" onclick="return window.location.href='{{ url('/') }}?d=DESC'" href="javascript:void(0)">
+                                      <i class="fa fa-caret-down"></i></a>
+                                </th>
                                 <th scope="col">Belegart</th>
-                                <th scope="col">Belegnummer</th>
+                               <th scope="col" class="menz-date-filter">
+                                    Belegnummer                    
+                                    <a class="d-none d-md-inline-block" onclick="return window.location.href='{{ url('/')}}?b=ASC'"  href="javascript:void(0)">
+                                      <i class="fa fa-caret-up"></i></a>
+                                    <a class="d-none d-md-inline-block" onclick="return window.location.href='{{ url('/')}}?b=DESC'" href="javascript:void(0)">
+                                      <i class="fa fa-caret-down"></i></a>
+                                </th>
                                 <th scope="col">Ansicht</th>
                                 <th scope="col">Herunterladen</th>
                                 </tr>
@@ -66,11 +95,23 @@
 
                       <div class="tab-pane fade" id="nav-tab-{{ $bk }}" role="tabpanel" aria-labelledby="tab-{{ $bk }}">
                         <table class="table table-striped menz-table">
-                            <thead>
+                            <thead class="position-relative">
                                 <tr class="menz-table-row">
-                                <th scope="col">Dateidatum</th>
+                                <th scope="col" class="menz-date-filter">
+                                    Dateidatum                    
+                                    <a class="d-none d-md-inline-block" onclick="return window.location.href='{{ url('/') }}?d=ASC'"  href="javascript:void(0)">
+                                      <i class="fa fa-caret-up"></i></a>
+                                    <a class="d-none d-md-inline-block" onclick="return window.location.href='{{ url('/') }}?d=DESC'" href="javascript:void(0)">
+                                      <i class="fa fa-caret-down"></i></a>
+                                </th>
                                 <th scope="col">Belegart</th>
-                                <th scope="col">Belegnummer</th>
+                                <th scope="col" class="menz-date-filter">
+                                    Belegnummer                    
+                                    <a class="d-none d-md-inline-block" onclick="return window.location.href='{{ url('/')}}?b=ASC'"  href="javascript:void(0)">
+                                      <i class="fa fa-caret-up"></i></a>
+                                    <a class="d-none d-md-inline-block" onclick="return window.location.href='{{ url('/') }}?b=DESC'" href="javascript:void(0)">
+                                      <i class="fa fa-caret-down"></i></a>
+                                </th>
                                 <th scope="col">Ansicht</th>
                                 <th scope="col">Herunterladen</th>
                                 </tr>

@@ -31,9 +31,15 @@ class HomeController extends Controller
     {
         $user =  Auth::user();
 
-        $beleges = $user->beleges()
+        $beleges = $user->beleges();
                    //->where('Volltext', 'like', "%$search%")
-                   ->paginate( (new Belege())->perPage);
+
+        if(request()->filled('d')){
+            $beleges->orderBy('Dateidatum',request()->d);
+        }elseif (request()->filled('b')) {
+           $beleges->orderBy('Belegnummer',request()->b);
+        }          
+        $beleges = $beleges->paginate( (new Belege())->perPage);     
 
          $dBeleges = [];
         foreach (@$beleges as $key => $belege) {
@@ -69,7 +75,10 @@ class HomeController extends Controller
 
         if($request->filled('d')){
             $beleges->orderBy('Dateidatum',$request->d);
-        }          
+        }elseif ($request->filled('b')) {
+           $beleges->orderBy('Belegnummer',$request->b);
+        } 
+
         $beleges = $beleges->paginate( (new Belege())->perPage);
 
         return view('beleges',compact('beleges'));
@@ -80,8 +89,14 @@ class HomeController extends Controller
         $user =  Auth::user();
 
         $beleges = $user->beleges()
-                   ->where('Volltext', 'like', "%$search%")
-                   ->paginate( (new Belege())->perPage);
+                   ->where('Volltext', 'like', "%$search%");
+        if($request->filled('d')){
+            $beleges->orderBy('Dateidatum',$request->d);
+        }elseif ($request->filled('b')) {
+           $beleges->orderBy('Belegnummer',$request->b);
+        }
+
+        $beleges = $beleges->paginate( (new Belege())->perPage);           
 
          $dBeleges = [];
         foreach (@$beleges as $key => $belege) {

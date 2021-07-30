@@ -24,6 +24,12 @@
                       <option value="ASC" {{ @request()->d == 'ASC' ? 'selected' : ''}}>Dateidatum aufsteigend</option>
                     </select> 
 
+                    <select style="width: auto;" onchange="return window.location.href='{{ url(request()->slug)}}?b='+this.value" name="orderBy" class="form-control">
+                      <option value="">Belegnummer auswählen</option>
+                      <option value="DESC" {{ @request()->d == 'DESC' ? 'selected' : ''}}>Belegnummer absteigend</option>
+                      <option value="ASC" {{ @request()->d == 'ASC' ? 'selected' : ''}}>Belegnummer aufsteigend</option>
+                    </select> 
+
                   </div>
 
                     <div class="col-md-12 menz-col pb-0">
@@ -39,7 +45,14 @@
                               <i class="fa fa-caret-down"></i></a>
                         </th>
                           <th scope="col">Belegart</th>
-                          <th scope="col">Belegnummer</th>
+                          <th scope="col" class="menz-date-filter">
+                            Belegnummer                    
+                            <a class="d-none d-md-inline-block" onclick="return window.location.href='{{ url(request()->slug)}}?b=ASC'"  href="javascript:void(0)">
+                              <i class="fa fa-caret-up"></i></a>
+                            <a class="d-none d-md-inline-block" onclick="return window.location.href='{{ url(request()->slug)}}?b=DESC'" href="javascript:void(0)">
+                              <i class="fa fa-caret-down"></i></a>
+                        </th>
+
                           <th scope="col">Ansicht</th>
                           <th scope="col">Herunterladen</th>
                         </tr>

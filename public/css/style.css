@@ -894,6 +894,16 @@ tr:nth-child(even) {
     background: #e2b1ce;
 }
 
+/ Pagination CSS /
+span.relative.z-0.inline-flex.shadow-sm.rounded-md {
+    display: none;
+}
+nav.flex.items-center.justify-between {
+    margin: 50px 0 !important;
+}
+.hidden.sm\:flex-1.sm\:flex.sm\:items-center.sm\:justify-between {
+    margin-top: 20px;
+}
 
 @media (max-width:991px) {
     
