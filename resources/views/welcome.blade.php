@@ -12,7 +12,7 @@
                 <div class="menz-formBox">
                   <div class="alert alert-success" style="display:none;" id="alert-success" role="alert">
                     </div>
-                  <h2 class="formHeading text-center">Rechnung Menz Shop</h2>
+                  <h2 class="formHeading text-center">Menz Belegportal</h2>
             
                     
           
