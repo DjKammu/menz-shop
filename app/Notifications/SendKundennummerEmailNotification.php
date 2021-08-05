@@ -43,7 +43,7 @@ class SendKundennummerEmailNotification extends Notification
         return (new MailMessage)
                       ->subject('Send Kundennummer Notification')
                     ->line('Here is your Kundennummer of your account.')
-                    ->line('Kundennummer '.$this->user->kundennummer)
+                    ->line('Kundennummer '.$this->user->Kundennummer)
                     ->line('Thank you for using our application!');
     }
 
