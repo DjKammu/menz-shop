@@ -7,15 +7,16 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Rechnung - Menz Shop') }}</title>
+    <!-- <title>{{ config('app.name', 'Rechnung - Menz Shop') }}</title> -->
+    <title>Menz Belegportal</title>
     <!-- Bootstrap core CSS -->
-    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url(asset('vendor/bootstrap/css/bootstrap.min.css')) }}" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url(asset('vendor/fontawesome-free/css/all.min.css')) }}" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ url(asset('css/style.css')) }}" rel="stylesheet">
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -88,16 +89,15 @@
       </footer>
 
      <!-- Bootstrap core JavaScript -->
-     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+     <script src="{{ url(asset('vendor/jquery/jquery.min.js')) }}"></script>
+     <script src="{{ url(asset('vendor/bootstrap/js/bootstrap.bundle.min.js')) }}"></script>
  
      <!-- Plugin JavaScript -->
-     <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+     <script src="{{ url(asset('vendor/jquery-easing/jquery.easing.min.js')) }}"></script>
 
     <!-- Custom JavaScript -->
-    <script src="{{ asset('js/form.js') }}"></script>
+    <script src="{{ url(asset('js/form.js')) }}"></script>
   </body>
-
-                    
+    
   </html>
 
