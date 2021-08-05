@@ -33,7 +33,7 @@ class ForgotPasswordController extends Controller
      */
     protected function validateEmail(Request $request)
     {
-        $request->validate(['kundennummer' => 'required|exists:users,kundennummer']);
+        $request->validate(['kundennummer' => 'required|exists:Login,kundennummer']);
     }
     
     /**
@@ -49,7 +49,7 @@ class ForgotPasswordController extends Controller
 
     protected function sendKundennummerEmail(Request $request){
 
-        $request->validate(['email' => 'required|email|exists:users,email']);
+        $request->validate(['email' => 'required|email|exists:Login,email']);
 
         $user = User::where($request->only('email'))->first();
 
