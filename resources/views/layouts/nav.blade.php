@@ -3,7 +3,7 @@
       <div class="menz-header-wrap">
             <div class="menz-logo-container">
                <a class="menz-brand" href="{{ url('/') }}">
-                  <img src="{{ url(asset('public/images/logo-white.svg')) }}" alt="Menz Logo" class="img-fluid">
+                  <img src="{{ asset('images/logo-white.svg') }}" alt="Menz Logo" class="img-fluid">
                </a>
             </div>
             <div class="d-lg-none ms-auto me-4">
