@@ -63,10 +63,10 @@
 
                          <tr>
                           <td>{{ \Carbon\Carbon::parse($belege->Dateidatum)->format('d.m.Y') }}</td>
-                          <td class="menz-cat-{{ \Str::lower($belege->Belegart) }}"><span>{{  $belege->Belegart }}</span></td>
-                          <td>{{  $belege->Belegnummer }}</td>
-                          <td> <a href="{{ route('view',['id' => $belege->Belegnummer] )}}" target="_blank">Ansicht</a> </td>
-                          <td> <a href="{{ route('download',['id' => $belege->Belegnummer] )}}" target="_blank">Herunterladen</a> </td>
+                          <td class="menz-cat-{{ \Str::lower($belege->doctype) }}"><span>{{  $belege->doctype }}</span></td>
+                          <td>{{  $belege->doc_number }}</td>
+                          <td> <a href="{{ route('view',['id' => $belege->number] )}}" target="_blank">Ansicht</a> </td>
+                          <td> <a href="{{ route('download',['id' => $belege->number] )}}" target="_blank">Herunterladen</a> </td>
                         </tr>
                             @endforeach
 

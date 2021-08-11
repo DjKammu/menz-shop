@@ -9,9 +9,9 @@ class Belege extends Model
 {
     use HasFactory;
 
-    protected $table = 'Belege';
+    protected $table = 'documents';
 
-    protected $perPage = 20;
+    protected $perPage = 2;
 
     protected CONST MENU_COUNT = 4;
 
@@ -24,9 +24,9 @@ class Belege extends Model
 
     	$userBeleges = auth()->user()->beleges();
 
-    	$menus = $userBeleges->select('Belegart', \DB::raw('count(*) as count'))
-    	         ->groupBy('Belegart')->orderBy('count','DESC')
-    	         ->pluck('Belegart')->toArray();
+    	$menus = $userBeleges->select('doctype', \DB::raw('count(*) as count'))
+    	         ->groupBy('doctype')->orderBy('count','DESC')
+    	         ->pluck('doctype')->toArray();
 
        
     	 if(count($menus) > self::MENU_COUNT){
@@ -35,5 +35,10 @@ class Belege extends Model
     	 }        
 
     	 return [$menus,$dMenus];
+    }
+
+    public function docBinary(){
+
+        return $this->hasOne(DocumentBinary::class,'id','id');
     }
 }

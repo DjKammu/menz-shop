@@ -54,6 +54,6 @@ class User extends Authenticatable
 
     public function beleges(){
      
-       return $this->hasMany(Belege::class,'Kundennummer','Kundennummer');
+       return $this->hasMany(Belege::class,'customer','Kundennummer');
     }
 }

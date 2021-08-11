@@ -190,6 +190,20 @@ $(document).ready(function(){
        else if(key == 13){
           window.location.href = '/search/'+search;
         }
+      }); 
+
+       $('#idInput').keypress(function (e) {
+       var key = e.which;
+       if(key == 13){
+            $('#nextBtn').click();
+       }
+      });  
+
+       $('#psInput').keypress(function (e) {
+       var key = e.which;
+       if(key == 13){
+          $('#submitBtn').click();
+       }
       });  
 
       $('body').on('click','li.nav-item.dropdown',function(){ 

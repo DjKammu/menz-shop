@@ -12,6 +12,7 @@ class HomeController extends Controller
     CONST INVOICE = 'Rechnung';
 
     CONST DOC_TYPE = 'Auftrag';
+    
     /**
      * Create a new controller instance.
      *
@@ -35,17 +36,19 @@ class HomeController extends Controller
                    //->where('Volltext', 'like', "%$search%")
 
         if(request()->filled('d')){
-            $beleges->orderBy('Dateidatum',request()->d);
+            $beleges->orderBy('filedate',request()->d);
         }elseif (request()->filled('b')) {
-           $beleges->orderBy('Belegnummer',request()->b);
+           $beleges->orderBy('number',request()->b);
         }          
-        $beleges = $beleges->paginate( (new Belege())->perPage);     
+        $beleges = $beleges->paginate( (new Belege())->perPage);   
+
+
 
          $dBeleges = [];
         foreach (@$beleges as $key => $belege) {
-             $dBeleges[$belege['Belegart']][] = $belege;
+             $dBeleges[$belege['doctype']][] = $belege;
          }           
-
+       
         @array_multisort(array_map('count', $dBeleges), SORT_DESC, $dBeleges);
 
        // $rechnung = $beleges->where('Belegart',self::INVOICE)->all();
@@ -71,12 +74,12 @@ class HomeController extends Controller
         $user =  Auth::user();
      
         $beleges = $user->beleges()
-                  ->whereBelegart(ucfirst($slug));
+                  ->whereDoctype(ucfirst($slug));
 
         if($request->filled('d')){
-            $beleges->orderBy('Dateidatum',$request->d);
+            $beleges->orderBy('filedate',$request->d);
         }elseif ($request->filled('b')) {
-           $beleges->orderBy('Belegnummer',$request->b);
+           $beleges->orderBy('number',$request->b);
         } 
 
         $beleges = $beleges->paginate( (new Belege())->perPage);
@@ -89,18 +92,18 @@ class HomeController extends Controller
         $user =  Auth::user();
 
         $beleges = $user->beleges()
-                   ->where('Volltext', 'like', "%$search%");
+                   ->where('content', 'like', "%$search%");
         if($request->filled('d')){
-            $beleges->orderBy('Dateidatum',$request->d);
+            $beleges->orderBy('filedate',$request->d);
         }elseif ($request->filled('b')) {
-           $beleges->orderBy('Belegnummer',$request->b);
+           $beleges->orderBy('number',$request->b);
         }
 
         $beleges = $beleges->paginate( (new Belege())->perPage);           
 
          $dBeleges = [];
         foreach (@$beleges as $key => $belege) {
-             $dBeleges[$belege['Belegart']][] = $belege;
+             $dBeleges[$belege['doctype']][] = $belege;
          }           
 
         @array_multisort(array_map('count', $dBeleges), SORT_DESC, $dBeleges);
@@ -114,11 +117,7 @@ class HomeController extends Controller
 
     public function download(Request $request,$id ){
 
-        $user =  Auth::user();
-
-        $file = @$user->beleges()
-                   ->where('Belegnummer', $id)
-                   ->pluck('Binaerdaten')->first();
+        $file = $this->getFile($id);    
 
         header("Content-length: ".strlen($file));
         header("Content-type: application/pdf");
@@ -129,14 +128,23 @@ class HomeController extends Controller
         exit();
             
     }
+   
+    public function getFile($id){
+
+        $user =  Auth::user();
+        $file = @$user->beleges()
+                   ->where('number', $id)->first();
+        $file = $file->docBinary();           
+
+        return ($file->exists()) ?  $file->pluck('bin')->first() : '';           
+
+    }
+
 
     public function view(Request $request,$id ){
 
-        $user =  Auth::user();
-
-        $file = @$user->beleges()
-                   ->where('Belegnummer', $id)
-                   ->pluck('Binaerdaten')->first();
+        $file = $this->getFile($id);        
+              
         header("Content-length: ".strlen($file));
         header("Content-type: application/pdf");
         header("Cache-Control: no-cache");
