@@ -11,7 +11,7 @@ class Belege extends Model
 
     protected $table = 'documents';
 
-    protected $perPage = 2;
+    protected $perPage = 20;
 
     protected CONST MENU_COUNT = 4;
 
