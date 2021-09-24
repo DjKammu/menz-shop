@@ -117,14 +117,17 @@ class HomeController extends Controller
 
     public function download(Request $request,$id ){
 
-        $file = $this->getFile($id);    
+        $file = $this->getFile($id); 
 
-        header("Content-length: ".strlen($file));
+        $binFile = @$file->docBinary->bin;
+
+        header("Content-length: ".strlen($binFile));
         header("Content-type: application/pdf");
         header("Cache-Control: no-cache");
         header("Pragma: no-cache");
-        header("Content-Disposition: attachment; filename=".now().$id.'.pdf');
-        echo $file;
+        header("Content-Disposition: attachment; filename=".$file->filedate.'-'.
+            $file->doc_number.'.pdf');
+        echo $binFile;
         exit();
             
     }
@@ -133,10 +136,10 @@ class HomeController extends Controller
 
         $user =  Auth::user();
         $file = @$user->beleges()
-                   ->where('number', $id)->first();
-        $file = $file->docBinary();           
+                   ->where('number', $id)
+                   ->with('docBinary')->first();
 
-        return ($file->exists()) ?  $file->pluck('bin')->first() : '';           
+        return ($file->exists()) ?  $file : [];           
 
     }
 
@@ -144,7 +147,7 @@ class HomeController extends Controller
     public function view(Request $request,$id ){
 
         $file = $this->getFile($id);        
-              
+        $file = @$file->docBinary->bin;      
         header("Content-length: ".strlen($file));
         header("Content-type: application/pdf");
         header("Cache-Control: no-cache");
