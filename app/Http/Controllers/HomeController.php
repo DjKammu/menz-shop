@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Belege;
 use Auth;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -125,7 +126,7 @@ class HomeController extends Controller
         header("Content-type: application/pdf");
         header("Cache-Control: no-cache");
         header("Pragma: no-cache");
-        header("Content-Disposition: attachment; filename=".$file->filedate.'-'.
+        header("Content-Disposition: attachment; filename=".Carbon::parse($file->filedate)->format('d.m.Y').'-'.
             $file->doc_number.'.pdf');
         echo $binFile;
         exit();
