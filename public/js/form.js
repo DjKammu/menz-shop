@@ -214,4 +214,39 @@ $(document).ready(function(){
        $('#navbarNavDropdown').slideToggle();
       });
 
+      $('input[name="daterange"]').daterangepicker();
+
+       $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
+        let startDate = picker.startDate.format('MM/DD/YYYY');
+        let endDate = picker.endDate.format('MM/DD/YYYY');
+        var fullUrl = window.location.href;
+        let isStart = fullUrl.includes('start') ;
+        let isEnd = fullUrl.includes('end') ;
+        
+        var url = '/';
+        if(isStart || isEnd){ 
+            fullUrl = replaceUrlParam(fullUrl,'start',startDate);
+            fullUrl = replaceUrlParam(fullUrl,'end',endDate);
+            url = fullUrl;
+        }
+        else{
+           url = fullUrl+(fullUrl.includes('?')?'&':'?')+'start='+startDate+'&end='+endDate
+        }
+
+        window.location.href = url;
+
+       });
+      
+      function replaceUrlParam(url, paramName, paramValue)
+      {
+          if (paramValue == null) {
+              paramValue = '';
+          }
+          var pattern = new RegExp('\\b('+paramName+'=).*?(&|#|$)');
+          if (url.search(pattern)>=0) {
+              return url.replace(pattern,'$1' + paramValue + '$2');
+          }
+          url = url.replace(/[?#]$/,'');
+          return url + (url.indexOf('?')>0 ? '&' : '?') + paramName + '=' + paramValue;
+      }
 })

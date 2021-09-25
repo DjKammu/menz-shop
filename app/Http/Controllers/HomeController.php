@@ -35,6 +35,15 @@ class HomeController extends Controller
 
         $beleges = $user->beleges();
                    //->where('Volltext', 'like', "%$search%")
+         
+         if(request()->filled(['start','end'])){
+           
+             $start = Carbon::parse(request()->start)->format('Y-m-d');
+             $end = Carbon::parse(request()->end)->format('Y-m-d');
+
+             $beleges->whereRaw("STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
+
+         }
 
         if(request()->filled('d')){
             $beleges->orderBy('filedate',request()->d);
@@ -44,8 +53,7 @@ class HomeController extends Controller
         $beleges = $beleges->paginate( (new Belege())->perPage);   
 
 
-
-         $dBeleges = [];
+        $dBeleges = [];
         foreach (@$beleges as $key => $belege) {
              $dBeleges[$belege['doctype']][] = $belege;
          }           
@@ -76,6 +84,16 @@ class HomeController extends Controller
      
         $beleges = $user->beleges()
                   ->whereDoctype(ucfirst($slug));
+        
+        if(request()->filled(['start','end'])){
+           
+             $start = Carbon::parse(request()->start)->format('Y-m-d');
+             $end = Carbon::parse(request()->end)->format('Y-m-d');
+
+             $beleges->whereRaw("STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
+
+         }
+
 
         if($request->filled('d')){
             $beleges->orderBy('filedate',$request->d);
@@ -94,6 +112,16 @@ class HomeController extends Controller
 
         $beleges = $user->beleges()
                    ->where('content', 'like', "%$search%");
+        
+        if(request()->filled(['start','end'])){
+           
+             $start = Carbon::parse(request()->start)->format('Y-m-d');
+             $end = Carbon::parse(request()->end)->format('Y-m-d');
+
+             $beleges->whereRaw("STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
+
+         }
+                    
         if($request->filled('d')){
             $beleges->orderBy('filedate',$request->d);
         }elseif ($request->filled('b')) {

@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ url(asset('css/style.css')) }}" rel="stylesheet">
+    <link href="{{ url(asset('css/daterangepicker.css')) }}" rel="stylesheet">
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -99,6 +100,9 @@
 
     <!-- Custom JavaScript -->
     <script src="{{ url(asset('js/form.js')) }}"></script>
+
+    <script src="{{ url(asset('js/moment.min.js')) }}"></script>
+    <script src="{{ url(asset('js/daterangepicker.min.js')) }}"></script>
   </body>
     
   </html>

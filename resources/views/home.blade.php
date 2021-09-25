@@ -22,9 +22,11 @@
                         </svg>
                     </span>
                 </div> -->
-
+                <div class="col-md-12">
+                 <input type="text" class="daterange-picker" name="daterange" value="{{ @request()->start .'-'. @request()->end}}" />  
+                </div>
                 <div class="col-md-12 menz-col pb-0 pull-right mobile-more">
-                    
+                   
                     <select style="width: auto;" onchange="return window.location.href='{{ url('/') }}?d='+this.value" name="orderBy" class="form-control">
                       <option value="">Dateidatum auswählen</option>
                       <option value="DESC" {{ @request()->d == 'DESC' ? 'selected' : ''}}>Dateidatum absteigend</option>
@@ -39,7 +41,7 @@
 
                   </div>
 
-                <nav class="mt-2 mt-md-5">
+                <!-- <nav class="mt-2 mt-md-5">
                     <div class="nav nav-tabs menz-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="tab-all" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Alle</button>
                         
@@ -50,7 +52,7 @@
                         @endforeach
 
                     </div>
-                </nav>
+                </nav> -->
                 <div class="tab-content mt-4" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="tab-all">
                         <table class="table table-striped menz-table">
@@ -91,7 +93,7 @@
                             </table>
                     </div>
 
-                    @foreach(@$dBeleges as $bk => $dBelege)
+                    <!-- @foreach(@$dBeleges as $bk => $dBelege)
 
                       <div class="tab-pane fade" id="nav-tab-{{ $bk }}" role="tabpanel" aria-labelledby="tab-{{ $bk }}">
                         <table class="table table-striped menz-table">
@@ -134,7 +136,7 @@
 
 
                    @endforeach
-
+ -->
 
                     
                     <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab-2">
@@ -149,3 +151,5 @@
     </div>
 </div>
 @endsection
+
+
