@@ -23,8 +23,11 @@
                     </span>
                 </div>
                 
-                 <div class="col-md-12">
-                 <input type="text" class="daterange-picker" name="daterange" value="{{ @request()->start .'-'. @request()->end}}" />  
+                 <div class="col-md-12 daterange-outer">
+                   <a class="menz-edit mt-3" href="javascript::void(0)" onclick="return window.location.href='{{ Request::url() }}'">
+                       Zurücksetzen
+                   </a>
+                    <input type="text" class="daterange-picker" name="daterange" value="{{ @request()->start .'-'. @request()->end}}" />  
                 </div>
                 
                 <div class="col-md-12 menz-col pb-0 pull-right mobile-more">

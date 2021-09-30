@@ -907,9 +907,12 @@ nav.flex.items-center.justify-between {
 .hidden.sm\:flex-1.sm\:flex.sm\:items-center.sm\:justify-between span.relative.z-0.inline-flex.shadow-sm.rounded-md{
     display: none;
 }
+
+.daterange-outer{
+    text-align: right;
+}
 .daterange-picker{
     min-width: 200px;
-    float: right;
     margin-bottom: 10px;
 }
 @media (max-width:991px) {
