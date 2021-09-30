@@ -16,8 +16,8 @@
                           </div>
                       </div>
                   </div>
-
-                   <div class="col-md-12 pull-right">
+                  
+                   <div class="col-md-12">
                    <input type="text" class="daterange-picker" name="daterange" value="{{ @request()->start .'-'. @request()->end}}" />  
                   </div>
                   

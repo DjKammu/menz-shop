@@ -50,7 +50,8 @@ class HomeController extends Controller
             $orderBy = request()->filled('orderby') ? ( !in_array(request()->orderby, 
                 ['filedate','number'] ) ? 'number' : request()->orderby ) : 'number';
             
-            $order = !in_array(request()->order, [\Str::lower('DESC'),\Str::lower('ASC')])  ? 'ASC' : request()->order;
+            $order = !in_array(\Str::lower(request()->order), ['desc','asc'])  ? 'ASC' 
+             : request()->order;
 
             $beleges->orderBy($orderBy,$order);
 
@@ -106,7 +107,8 @@ class HomeController extends Controller
             $orderBy = request()->filled('orderby') ? ( !in_array(request()->orderby, 
                 ['filedate','number'] ) ? 'number' : request()->orderby ) : 'number';
             
-            $order = !in_array(request()->order, [\Str::lower('DESC'),\Str::lower('ASC')])  ? 'ASC' : request()->order;
+            $order = !in_array(\Str::lower(request()->order), ['desc','asc'])  ? 'ASC' 
+             : request()->order;
 
             $beleges->orderBy($orderBy,$order);
 
@@ -138,8 +140,9 @@ class HomeController extends Controller
             $orderBy = request()->filled('orderby') ? ( !in_array(request()->orderby, 
                 ['filedate','number'] ) ? 'number' : request()->orderby ) : 'number';
             
-            $order = !in_array(request()->order, [\Str::lower('DESC'),\Str::lower('ASC')])  ? 'ASC' : request()->order;
-
+           $order = !in_array(\Str::lower(request()->order), ['desc','asc'])  ? 'ASC' 
+             : request()->order;
+             
             $beleges->orderBy($orderBy,$order);
 
         }
