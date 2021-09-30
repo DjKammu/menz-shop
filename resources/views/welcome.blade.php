@@ -55,7 +55,7 @@
                       </div>
                       <label for="" class="remember">
                           <input type="checkbox" name="" id="remember_me" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                          Remember Me
+                         Angemeldet bleiben
                       </label>
                       <div class="text-center no-access mb-2" >
                         <a href="{{ route('password.request') }}" class="links">Kundennummer oder Passwort vergessen</a><br>

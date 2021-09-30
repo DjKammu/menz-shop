@@ -214,11 +214,34 @@ $(document).ready(function(){
        $('#navbarNavDropdown').slideToggle();
       });
 
-      $('input[name="daterange"]').daterangepicker();
+       var germanLocale = {
+         monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+        };
+
+       
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const start = (urlParams.get('start')) ? urlParams.get('start') : moment().format("DD/MM/YYYY")
+        const end = (urlParams.get('end')) ? urlParams.get('end') : moment().format("DD/MM/YYYY")
+
+         $('input[name="daterange"]').daterangepicker({
+          locale:germanLocale,
+          opens: 'left',
+          cancelLabel: 'reset'
+        });
+ 
+
+        $('input[name="daterange"]').data('daterangepicker').setStartDate(moment(start,'DD/MM/YYYY').format("MM/DD/YYYY"));
+        $('input[name="daterange"]').data('daterangepicker').setEndDate(moment(end,'DD/MM/YYYY').format("MM/DD/YYYY"));
+
+  
+        $('input[name="daterange"]').val(start + ' - '+ end);
+
 
        $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
-        let startDate = picker.startDate.format('MM/DD/YYYY');
-        let endDate = picker.endDate.format('MM/DD/YYYY');
+        $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+        let startDate = picker.startDate.format('DD/MM/YYYY');
+        let endDate = picker.endDate.format('DD/MM/YYYY');
         var fullUrl = window.location.href;
         let isStart = fullUrl.includes('start') ;
         let isEnd = fullUrl.includes('end') ;
@@ -236,17 +259,46 @@ $(document).ready(function(){
         window.location.href = url;
 
        });
-      
-      function replaceUrlParam(url, paramName, paramValue)
-      {
-          if (paramValue == null) {
-              paramValue = '';
-          }
-          var pattern = new RegExp('\\b('+paramName+'=).*?(&|#|$)');
-          if (url.search(pattern)>=0) {
-              return url.replace(pattern,'$1' + paramValue + '$2');
-          }
-          url = url.replace(/[?#]$/,'');
-          return url + (url.indexOf('?')>0 ? '&' : '?') + paramName + '=' + paramValue;
-      }
+
+
+       $('input[name="daterange"]').on('cancel.daterangepicker', function(ev, picker) {
+          $(this).val('');
+      });
+
+
 })
+
+
+  function sortOrderBy(orderBy,order){
+       
+      var fullUrl = window.location.href;
+      let isOrderBy = fullUrl.includes('orderby') ;
+      let isSort = fullUrl.includes('order') ;
+      
+      var url = '/';
+      if(isOrderBy || isSort){ 
+          fullUrl = replaceUrlParam(fullUrl,'orderby',orderBy);
+          fullUrl = replaceUrlParam(fullUrl,'order',order);
+          url = fullUrl;
+      }
+      else{
+         url = fullUrl+(fullUrl.includes('?')?'&':'?')+'orderby='+orderBy+'&order='+order
+      }
+
+       window.location.href = url;
+
+ }
+
+
+  function replaceUrlParam(url, paramName, paramValue)
+    {
+        if (paramValue == null) {
+            paramValue = '';
+        }
+        var pattern = new RegExp('\\b('+paramName+'=).*?(&|#|$)');
+        if (url.search(pattern)>=0) {
+            return url.replace(pattern,'$1' + paramValue + '$2');
+        }
+        url = url.replace(/[?#]$/,'');
+        return url + (url.indexOf('?')>0 ? '&' : '?') + paramName + '=' + paramValue;
+    }

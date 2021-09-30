@@ -27,13 +27,13 @@
                 </div>
                 <div class="col-md-12 menz-col pb-0 pull-right mobile-more">
                    
-                    <select style="width: auto;" onchange="return window.location.href='{{ url('/') }}?d='+this.value" name="orderBy" class="form-control">
+                    <select style="width: auto;" onchange="sortOrderBy('filedate', this.value)" name="orderBy" class="form-control">
                       <option value="">Dateidatum auswählen</option>
                       <option value="DESC" {{ @request()->d == 'DESC' ? 'selected' : ''}}>Dateidatum absteigend</option>
                       <option value="ASC" {{ @request()->d == 'ASC' ? 'selected' : ''}}>Dateidatum aufsteigend</option>
                     </select> 
 
-                    <select style="width: auto;" onchange="return window.location.href='{{ url('/')}}?b='+this.value" name="orderBy" class="form-control">
+                    <select style="width: auto;" onchange="sortOrderBy('number', this.value)"  name="orderBy" class="form-control">
                       <option value="">Belegnummer auswählen</option>
                       <option value="DESC" {{ @request()->d == 'DESC' ? 'selected' : ''}}>Belegnummer absteigend</option>
                       <option value="ASC" {{ @request()->d == 'ASC' ? 'selected' : ''}}>Belegnummer aufsteigend</option>
@@ -60,17 +60,17 @@
                                 <tr class="menz-table-row">
                                  <th scope="col" class="menz-date-filter">
                                     Dateidatum                    
-                                    <a class="d-none d-md-inline-block" onclick="return window.location.href='{{ url('/') }}?d=ASC'"  href="javascript:void(0)">
+                                    <a class="d-none d-md-inline-block" onclick="sortOrderBy('filedate', 'ASC')"  href="javascript:void(0)">
                                       <i class="fa fa-caret-up"></i></a>
-                                    <a class="d-none d-md-inline-block" onclick="return window.location.href='{{ url('/') }}?d=DESC'" href="javascript:void(0)">
+                                    <a class="d-none d-md-inline-block" onclick="sortOrderBy('filedate', 'DESC')"  href="javascript:void(0)">
                                       <i class="fa fa-caret-down"></i></a>
                                 </th>
                                 <th scope="col">Belegart</th>
                                <th scope="col" class="menz-date-filter">
                                     Belegnummer                    
-                                    <a class="d-none d-md-inline-block" onclick="return window.location.href='{{ url('/')}}?b=ASC'"  href="javascript:void(0)">
+                                    <a class="d-none d-md-inline-block" onclick="sortOrderBy('number', 'ASC')"   href="javascript:void(0)">
                                       <i class="fa fa-caret-up"></i></a>
-                                    <a class="d-none d-md-inline-block" onclick="return window.location.href='{{ url('/')}}?b=DESC'" href="javascript:void(0)">
+                                    <a class="d-none d-md-inline-block" onclick="sortOrderBy('number', 'DESC')"  href="javascript:void(0)">
                                       <i class="fa fa-caret-down"></i></a>
                                 </th>
                                 <th scope="col">Ansicht</th>

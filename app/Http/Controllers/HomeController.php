@@ -38,18 +38,24 @@ class HomeController extends Controller
          
          if(request()->filled(['start','end'])){
            
-             $start = Carbon::parse(request()->start)->format('Y-m-d');
-             $end = Carbon::parse(request()->end)->format('Y-m-d');
-
+             $start = Carbon::createFromFormat('d/m/Y',request()->start)->format('Y-m-d');
+             $end = Carbon::createFromFormat('d/m/Y', request()->end)->format('Y-m-d');
+            
              $beleges->whereRaw("STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
 
          }
 
-        if(request()->filled('d')){
-            $beleges->orderBy('filedate',request()->d);
-        }elseif (request()->filled('b')) {
-           $beleges->orderBy('number',request()->b);
-        }          
+                    
+        if(request()->filled('order')){
+            $orderBy = request()->filled('orderby') ? ( !in_array(request()->orderby, 
+                ['filedate','number'] ) ? 'number' : request()->orderby ) : 'number';
+            
+            $order = !in_array(request()->order, [\Str::lower('DESC'),\Str::lower('ASC')])  ? 'ASC' : request()->order;
+
+            $beleges->orderBy($orderBy,$order);
+
+        }
+         
         $beleges = $beleges->paginate( (new Belege())->perPage);   
 
 
@@ -87,19 +93,25 @@ class HomeController extends Controller
         
         if(request()->filled(['start','end'])){
            
-             $start = Carbon::parse(request()->start)->format('Y-m-d');
-             $end = Carbon::parse(request()->end)->format('Y-m-d');
-
+             $start = Carbon::createFromFormat('d/m/Y',request()->start)->format('Y-m-d');
+             $end = Carbon::createFromFormat('d/m/Y', request()->end)->format('Y-m-d');
+            
              $beleges->whereRaw("STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
 
          }
 
 
-        if($request->filled('d')){
-            $beleges->orderBy('filedate',$request->d);
-        }elseif ($request->filled('b')) {
-           $beleges->orderBy('number',$request->b);
-        } 
+                    
+        if(request()->filled('order')){
+            $orderBy = request()->filled('orderby') ? ( !in_array(request()->orderby, 
+                ['filedate','number'] ) ? 'number' : request()->orderby ) : 'number';
+            
+            $order = !in_array(request()->order, [\Str::lower('DESC'),\Str::lower('ASC')])  ? 'ASC' : request()->order;
+
+            $beleges->orderBy($orderBy,$order);
+
+        }
+         
 
         $beleges = $beleges->paginate( (new Belege())->perPage);
 
@@ -115,19 +127,23 @@ class HomeController extends Controller
         
         if(request()->filled(['start','end'])){
            
-             $start = Carbon::parse(request()->start)->format('Y-m-d');
-             $end = Carbon::parse(request()->end)->format('Y-m-d');
-
+             $start = Carbon::createFromFormat('d/m/Y',request()->start)->format('Y-m-d');
+             $end = Carbon::createFromFormat('d/m/Y', request()->end)->format('Y-m-d');
+            
              $beleges->whereRaw("STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
 
          }
                     
-        if($request->filled('d')){
-            $beleges->orderBy('filedate',$request->d);
-        }elseif ($request->filled('b')) {
-           $beleges->orderBy('number',$request->b);
-        }
+       if(request()->filled('order')){
+            $orderBy = request()->filled('orderby') ? ( !in_array(request()->orderby, 
+                ['filedate','number'] ) ? 'number' : request()->orderby ) : 'number';
+            
+            $order = !in_array(request()->order, [\Str::lower('DESC'),\Str::lower('ASC')])  ? 'ASC' : request()->order;
 
+            $beleges->orderBy($orderBy,$order);
+
+        }
+         
         $beleges = $beleges->paginate( (new Belege())->perPage);           
 
          $dBeleges = [];
