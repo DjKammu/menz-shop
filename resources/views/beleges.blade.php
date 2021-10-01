@@ -69,7 +69,8 @@
                          @foreach(@$beleges as $belege)
 
                          <tr>
-                          <td>{{ \Carbon\Carbon::parse($belege->filedate)->format('d.m.Y') }}</td>
+                            <td class="menz-cat-{{ \Str::lower($belege->doctype) }}"><span>{{  $belege->doctype }}</span></td>
+                          <td class="menz-mono-font">{{ \Carbon\Carbon::parse($belege->filedate)->format('d.m.Y') }}</td>
                           <td class="menz-cat-{{ \Str::lower($belege->doctype) }}"><span>{{  $belege->doctype }}</span></td>
                           <td>{{  $belege->doc_number }}</td>
                           <td> <a href="{{ route('view',['id' => $belege->number] )}}" target="_blank">Ansicht</a> </td>
