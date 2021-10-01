@@ -147,7 +147,7 @@
                     </div>
                 </div>
 
-                {!! $beleges->render() !!}
+              {{ $beleges->withQueryString()->links() }}
 
             </div>
         </div>
