@@ -148,7 +148,7 @@
                         No results were found. 
                     </div>
                 </div>
-
+                 {{ $beleges->withQueryString()->links() }}
                 {!! $beleges->render() !!}
 
             </div>
