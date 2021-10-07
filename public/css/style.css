@@ -842,11 +842,17 @@ tr:nth-child(even) {
     bottom: 22%;
     margin-left: 6.5px;
 }
-.menz-cat-auftrag span, .menz-cat-stornorechnung span, .menz-cat-rechnung span, .menz-cat-angebot span, .menz-cat-barverkauf span, .menz-cat-auftrags-storno span, .menz-cat-bar-storno span, .menz-cat-lieferschein span, .menz-cat-rücklieferschein span, .menz-cat-gutschrift span, .menz-cat-sofortrechnung span, .menz-cat-direktrechnung span {
+.menz-cat-auftrag span, .menz-cat-stornorechnung span, .menz-cat-rechnung span, .menz-cat-angebot span, .menz-cat-barverkauf span,
+.menz-cat-auftrags-storno span, .menz-cat-bar-storno span, .menz-cat-lieferschein span, .menz-cat-rücklieferschein span, .menz-cat-gutschrift span,
+ .menz-cat-sofortrechnung span, .menz-cat-direktrechnung span, .menz-cat-rácklieferschein span {
     color: #fff;
     padding: 3px 15px;
     border-radius: 30px;
 }
+.menz-cat-rácklieferschein span {
+    background: #4f48bd;
+}
+
 .menz-cat-auftrag span {
     background: #38c49f;
 }

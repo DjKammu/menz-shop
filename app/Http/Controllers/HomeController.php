@@ -38,8 +38,8 @@ class HomeController extends Controller
          
          if(request()->filled(['start','end'])){
            
-             $start = Carbon::createFromFormat('d/m/Y',request()->start)->format('Y-m-d');
-             $end = Carbon::createFromFormat('d/m/Y', request()->end)->format('Y-m-d');
+             $start = Carbon::createFromFormat('d.m.Y',request()->start)->format('Y-m-d');
+             $end = Carbon::createFromFormat('d.m.Y', request()->end)->format('Y-m-d');
             
              $beleges->whereRaw("STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
 
@@ -60,13 +60,14 @@ class HomeController extends Controller
         $beleges = $beleges->paginate( (new Belege())->perPage);   
 
 
+
         $dBeleges = [];
         foreach (@$beleges as $key => $belege) {
              $dBeleges[$belege['doctype']][] = $belege;
          }           
        
         @array_multisort(array_map('count', $dBeleges), SORT_DESC, $dBeleges);
-
+        
        // $rechnung = $beleges->where('Belegart',self::INVOICE)->all();
         //$lieferschein = $beleges->where('Belegart',self::DOC_TYPE)->all();
 
@@ -94,8 +95,8 @@ class HomeController extends Controller
         
         if(request()->filled(['start','end'])){
            
-             $start = Carbon::createFromFormat('d/m/Y',request()->start)->format('Y-m-d');
-             $end = Carbon::createFromFormat('d/m/Y', request()->end)->format('Y-m-d');
+             $start = Carbon::createFromFormat('d.m.Y',request()->start)->format('Y-m-d');
+             $end = Carbon::createFromFormat('d.m.Y', request()->end)->format('Y-m-d');
             
              $beleges->whereRaw("STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
 
@@ -124,13 +125,22 @@ class HomeController extends Controller
 
         $user =  Auth::user();
 
+        $searchTerms = explode(' ',$search);
+       
+
         $beleges = $user->beleges()
-                   ->where('content', 'like', "%$search%");
-        
+                    ->where(function ($q) use ($searchTerms) {
+                      foreach ($searchTerms as $value) {
+                        $q->orWhere('content', 'like', "%{$value}%");
+                      }
+                    });
+                    // ->where('content', 'like', "%$searchTerms%");
+
+               
         if(request()->filled(['start','end'])){
            
-             $start = Carbon::createFromFormat('d/m/Y',request()->start)->format('Y-m-d');
-             $end = Carbon::createFromFormat('d/m/Y', request()->end)->format('Y-m-d');
+             $start = Carbon::createFromFormat('d.m.Y',request()->start)->format('Y-m-d');
+             $end = Carbon::createFromFormat('d.m.Y', request()->end)->format('Y-m-d');
             
              $beleges->whereRaw("STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
 

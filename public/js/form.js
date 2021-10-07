@@ -215,33 +215,39 @@ $(document).ready(function(){
       });
 
        var germanLocale = {
-         monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+         cancelLabel: 'abbrechen',
+         applyLabel: 'anwenden',
+         monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+         daysOfWeek: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"]
         };
 
        
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
-        const start = (urlParams.get('start')) ? urlParams.get('start') : moment().format("DD/MM/YYYY")
-        const end = (urlParams.get('end')) ? urlParams.get('end') : moment().format("DD/MM/YYYY")
+        const start = (urlParams.get('start')) ? urlParams.get('start') : moment().format("DD.MM.YYYY")
+        const end = (urlParams.get('end')) ? urlParams.get('end') : moment().format("DD.MM.YYYY")
 
          $('input[name="daterange"]').daterangepicker({
           locale:germanLocale,
-          opens: 'left',
-          cancelLabel: 'reset'
+          opens: 'left'
         });
  
 
-        $('input[name="daterange"]').data('daterangepicker').setStartDate(moment(start,'DD/MM/YYYY').format("MM/DD/YYYY"));
-        $('input[name="daterange"]').data('daterangepicker').setEndDate(moment(end,'DD/MM/YYYY').format("MM/DD/YYYY"));
+        $('input[name="daterange"]').data('daterangepicker').setStartDate(moment(start,'DD.MM.YYYY').format("MM/DD/YYYY"));
+        $('input[name="daterange"]').data('daterangepicker').setEndDate(moment(end,'DD.MM.YYYY').format("MM/DD/YYYY"));
 
-  
-        $('input[name="daterange"]').val(start + ' - '+ end);
+        
+         if(urlParams.get('start') && urlParams.get('end')){ 
+            $('input[name="daterange"]').val(start + ' - '+ end);
+         }else{
+           $('input[name="daterange"]').val('');
+         }
 
 
        $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
-        $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
-        let startDate = picker.startDate.format('DD/MM/YYYY');
-        let endDate = picker.endDate.format('DD/MM/YYYY');
+        $(this).val(picker.startDate.format('DD.MM.YYYY') + ' - ' + picker.endDate.format('DD.MM.YYYY'));
+        let startDate = picker.startDate.format('DD.MM.YYYY');
+        let endDate = picker.endDate.format('DD.MM.YYYY');
         var fullUrl = window.location.href;
         let isStart = fullUrl.includes('start') ;
         let isEnd = fullUrl.includes('end') ;
