@@ -931,7 +931,7 @@ nav.flex.items-center.justify-between {
     li.nav-item.dropdown{
         display: none;
     }
-    .mobile-more {
+    .col-md-12.menz-col.pb-0.pull-right.mobile-more {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
