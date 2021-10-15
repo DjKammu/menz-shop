@@ -87,6 +87,11 @@
               </div>
           </div>
       </div>
-
+<style type="text/css">
+ .daterange-outer {
+    padding: 0 1.5em;
+}
+</style>
      
 @endsection
+
