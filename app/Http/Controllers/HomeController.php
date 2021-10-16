@@ -53,7 +53,9 @@ class HomeController extends Controller
             $order = !in_array(\Str::lower(request()->order), ['desc','asc'])  ? 'ASC' 
              : request()->order;
 
-            $beleges->orderBy($orderBy,$order);
+            $orderBy = ($orderBy == 'filedate') ? "STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y')" : $orderBy;
+
+            $beleges->orderByRaw("$orderBy $order");
 
         }
          
@@ -111,7 +113,9 @@ class HomeController extends Controller
             $order = !in_array(\Str::lower(request()->order), ['desc','asc'])  ? 'ASC' 
              : request()->order;
 
-            $beleges->orderBy($orderBy,$order);
+           $orderBy = ($orderBy == 'filedate') ? "STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y')" : $orderBy;
+
+            $beleges->orderByRaw("$orderBy $order");
 
         }
          
@@ -153,7 +157,9 @@ class HomeController extends Controller
            $order = !in_array(\Str::lower(request()->order), ['desc','asc'])  ? 'ASC' 
              : request()->order;
              
-            $beleges->orderBy($orderBy,$order);
+            $orderBy = ($orderBy == 'filedate') ? "STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y')" : $orderBy;
+
+            $beleges->orderByRaw("$orderBy $order");
 
         }
          
