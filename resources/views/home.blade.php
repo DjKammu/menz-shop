@@ -23,21 +23,22 @@
                     </span>
                 </div> -->
                 <div class="col-md-12 daterange-outer">
-                <a class="menz-edit mt-3" href="javascript::void(0)" onclick="return window.location.href='{{ Request::url() }}'">
+                
+                 <input type="text" class="daterange-picker" name="daterange" value="{{ @request()->start .'-'. @request()->end}}" />  
+                 <a class="menz-edit mt-3" href="javascript::void(0)" onclick="return window.location.href='{{ Request::url() }}'">
                     Zurücksetzen
                 </a>
-                 <input type="text" class="daterange-picker" name="daterange" value="{{ @request()->start .'-'. @request()->end}}" />  
                 </div>
                 <div class="col-md-12 menz-col pb-0 pull-right mobile-more">
                    
                     <select style="width: auto;" onchange="sortOrderBy('filedate', this.value)" name="orderBy" class="form-control">
-                      <option value="">Dateidatum auswählen</option>
+                      <option value="">Dateidatum <i class="fa fa-caret-up"> <i class="fa fa-caret-down"></option>
                       <option value="DESC" {{ @request()->d == 'DESC' ? 'selected' : ''}}>Dateidatum absteigend</option>
                       <option value="ASC" {{ @request()->d == 'ASC' ? 'selected' : ''}}>Dateidatum aufsteigend</option>
                     </select> 
-
+                    
                     <select style="width: auto;" onchange="sortOrderBy('number', this.value)"  name="orderBy" class="form-control">
-                      <option value="">Belegnummer auswählen</option>
+                      <option value="">Belegnummer <i class="fa fa-caret-up"> <i class="fa fa-caret-down"></option>
                       <option value="DESC" {{ @request()->d == 'DESC' ? 'selected' : ''}}>Belegnummer absteigend</option>
                       <option value="ASC" {{ @request()->d == 'ASC' ? 'selected' : ''}}>Belegnummer aufsteigend</option>
                     </select> 

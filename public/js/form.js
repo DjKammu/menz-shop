@@ -240,7 +240,7 @@ $(document).ready(function(){
          if(urlParams.get('start') && urlParams.get('end')){ 
             $('input[name="daterange"]').val(start + ' - '+ end);
          }else{
-           $('input[name="daterange"]').val('');
+           $('input[name="daterange"]').val('Datum wählen');
          }
 
 
@@ -268,7 +268,7 @@ $(document).ready(function(){
 
 
        $('input[name="daterange"]').on('cancel.daterangepicker', function(ev, picker) {
-          $(this).val('');
+          $(this).val('Datum wählen');
       });
 
 
