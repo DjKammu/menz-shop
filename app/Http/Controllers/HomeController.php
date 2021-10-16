@@ -125,7 +125,9 @@ class HomeController extends Controller
         return view('beleges',compact('beleges'));
     }
 
-    public function search(Request $request,$search = '' ){
+    public function search(Request $request ){
+
+        $search = $request->s;
 
         $user =  Auth::user();
 
@@ -135,7 +137,7 @@ class HomeController extends Controller
         $beleges = $user->beleges()
                     ->where(function ($q) use ($searchTerms) {
                       foreach ($searchTerms as $value) {
-                        $q->orWhere('content', 'like', "%{$value}%");
+                        $q->where('content', 'like', "%{$value}%");
                       }
                     });
                     // ->where('content', 'like', "%$searchTerms%");

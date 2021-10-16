@@ -188,7 +188,7 @@ $(document).ready(function(){
             return;
        }  
        else if(key == 13){
-          window.location.href = '/search/'+search;
+          window.location.href = '/search/?s='+search;
         }
       }); 
 
