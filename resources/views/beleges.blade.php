@@ -27,7 +27,7 @@
                     
                   </div>
                   
-                  <div class="col-md-12 menz-col pb-0 pull-right mobile-more">
+                  <div class="col-md-12 menz-col pb-0 pull-right mobile-more" id="menz-mobile-sort">
                     
                    <select style="width: auto;" onchange="sortOrderBy('filedate', this.value)" name="orderBy" class="form-control">
                       <option value="">Dateidatum <i class="fa fa-caret-up"> <i class="fa fa-caret-down"></option>
@@ -43,7 +43,7 @@
 
                   </div>
 
-                    <div class="col-md-12 menz-col pb-0">
+                    <div class="col-md-12 menz-col pb-0" id="menz-cat-single">
 
                     <table class="table table-striped menz-table">
                      <thead class="position-relative">

@@ -218,7 +218,8 @@ $(document).ready(function(){
          cancelLabel: 'abbrechen',
          applyLabel: 'anwenden',
          monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
-         daysOfWeek: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"]
+         daysOfWeek: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+         firstDay: 1
         };
 
        

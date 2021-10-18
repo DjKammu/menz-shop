@@ -791,7 +791,7 @@ tr:nth-child(even) {
 .searchInputBox {
     position: relative;
     max-width: 60%;
-    margin: 0 auto;
+    margin: 0px auto 50px;
 }
 
 .searchInputBox input {
@@ -855,13 +855,13 @@ tr:nth-child(even) {
     margin-left: 6.5px;
 }
 .menz-cat-auftrag span, .menz-cat-stornorechnung span, .menz-cat-rechnung span, .menz-cat-angebot span, .menz-cat-barverkauf span,
-.menz-cat-auftrags-storno span, .menz-cat-bar-storno span, .menz-cat-lieferschein span, .menz-cat-rücklieferschein span, .menz-cat-gutschrift span,
- .menz-cat-sofortrechnung span, .menz-cat-direktrechnung span, .menz-cat-rácklieferschein span, .menz-cat-kontrollwiegung span {
+.menz-cat-auftrags-storno span, .menz-cat-bar-storno span, .menz-cat-lieferschein span, .menz-cat-rÃ¼cklieferschein span, .menz-cat-gutschrift span,
+ .menz-cat-sofortrechnung span, .menz-cat-direktrechnung span, .menz-cat-rÃ¡cklieferschein span, .menz-cat-kontrollwiegung span {
     color: #fff;
     padding: 3px 15px;
     border-radius: 30px;
 }
-.menz-cat-rácklieferschein span {
+.menz-cat-rÃ¡cklieferschein span {
     background: #4f48bd;
 }
 
@@ -896,7 +896,7 @@ tr:nth-child(even) {
     background: #fe8faf;
 }
 
-.menz-cat-rücklieferschein span {
+.menz-cat-rÃ¼cklieferschein span {
     background: #ff9667;
 }
 
@@ -933,9 +933,16 @@ nav.flex.items-center.justify-between {
 .daterange-outer{
     text-align: right;
 }
-.daterange-picker{
+.daterange-picker {
     min-width: 200px;
-    margin-bottom: 10px;
+    margin-bottom: 10px;    
+    font-size: 15px;
+    border-radius: 4px;
+    border: 1px solid #323232;
+    margin-right: 5px;
+}
+.daterange-picker:focus-visible {
+    outline: 0;
 }
 .menz-table {
     font-family: 'CourierPrime';
@@ -943,19 +950,16 @@ nav.flex.items-center.justify-between {
 .menz-table .menz-table-row {
     font-family: 'SF Pro Display';
 }
-
+#nav-tabContent {
+    margin-top: 5px !important;
+}
+#menz-cat-single {
+    padding-top: 5px;
+}
 @media (max-width:991px) {
     
     li.nav-item.dropdown{
         display: none;
-    }
-    .col-md-12.menz-col.pb-0.pull-right.mobile-more {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .mobile-more select {
-        margin-top: 10px;
     }
     .daterange-outer, nav.flex.items-center.justify-between {
         text-align: center;
@@ -988,6 +992,16 @@ nav.flex.items-center.justify-between {
     }
     .menz-collapse .navbar-nav {
         padding: 0 18px;
+    }
+    #menz-mobile-sort {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 15px;
+    }
+    #menz-mobile-sort select.form-control {
+        width: 48%;
+        text-align: center;
     }
 }
 
