@@ -915,6 +915,9 @@ tr:nth-child(even) {
 .menz-cat-direktrechnung span {
     background: #eb7028;
 }
+.menz-cat-kontrollwiegung span {
+    background: #fd5959;
+}
 
  /* Pagination CSS  */
 .shadow-sm {
@@ -940,6 +943,7 @@ nav.flex.items-center.justify-between {
     border-radius: 4px;
     border: 1px solid #323232;
     margin-right: 5px;
+    padding: 1px 10px !important;
 }
 .daterange-picker:focus-visible {
     outline: 0;
@@ -996,11 +1000,11 @@ nav.flex.items-center.justify-between {
     #menz-mobile-sort {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-between;
         padding: 0 15px;
     }
     #menz-mobile-sort select.form-control {
-        width: 48%;
+        width: 48% !important;
         text-align: center;
     }
 }
@@ -1024,6 +1028,9 @@ nav.flex.items-center.justify-between {
         }
         .menz-table tr {
             padding: 30px 0;
+          }
+          .menz-table tr:first-child {
+            padding: 15px 0 30px !important;
           }
           .menz-table td {
             border: none;
