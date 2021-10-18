@@ -961,7 +961,11 @@ nav.flex.items-center.justify-between {
     padding-top: 5px;
 }
 @media (max-width:991px) {
-    
+     
+    .mobile-more {
+        display: block;
+    }
+
     li.nav-item.dropdown{
         display: none;
     }
