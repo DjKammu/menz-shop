@@ -41,7 +41,7 @@ class HomeController extends Controller
              $start = Carbon::createFromFormat('d.m.Y',request()->start)->format('Y-m-d');
              $end = Carbon::createFromFormat('d.m.Y', request()->end)->format('Y-m-d');
             
-             $beleges->whereRaw("STR_TO_DATE(LEFT(receiptdate,LOCATE(' ',receiptdate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
+             $beleges->whereRaw("STR_TO_DATE(receiptdate,'%d.%m.%Y') BETWEEN '$start' AND '$end'");
 
          }
 
@@ -53,7 +53,7 @@ class HomeController extends Controller
             $order = !in_array(\Str::lower(request()->order), ['desc','asc'])  ? 'ASC' 
              : request()->order;
 
-            $orderBy = ($orderBy == 'receiptdate') ? "STR_TO_DATE(LEFT(receiptdate,LOCATE(' ',receiptdate)),'%d.%m.%Y')" : $orderBy;
+            $orderBy = ($orderBy == 'receiptdate') ? "STR_TO_DATE(receiptdate,'%d.%m.%Y')" : $orderBy;
 
             $beleges->orderByRaw("$orderBy $order");
 
@@ -100,7 +100,7 @@ class HomeController extends Controller
              $start = Carbon::createFromFormat('d.m.Y',request()->start)->format('Y-m-d');
              $end = Carbon::createFromFormat('d.m.Y', request()->end)->format('Y-m-d');
             
-             $beleges->whereRaw("STR_TO_DATE(LEFT(receiptdate,LOCATE(' ',receiptdate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
+             $beleges->whereRaw("STR_TO_DATE(receiptdate,'%d.%m.%Y') BETWEEN '$start' AND '$end'");
 
          }
 
@@ -113,7 +113,7 @@ class HomeController extends Controller
             $order = !in_array(\Str::lower(request()->order), ['desc','asc'])  ? 'ASC' 
              : request()->order;
 
-           $orderBy = ($orderBy == 'receiptdate') ? "STR_TO_DATE(LEFT(receiptdate,LOCATE(' ',receiptdate)),'%d.%m.%Y')" : $orderBy;
+           $orderBy = ($orderBy == 'receiptdate') ? "STR_TO_DATE(receiptdate,'%d.%m.%Y')" : $orderBy;
 
             $beleges->orderByRaw("$orderBy $order");
 
@@ -148,7 +148,7 @@ class HomeController extends Controller
              $start = Carbon::createFromFormat('d.m.Y',request()->start)->format('Y-m-d');
              $end = Carbon::createFromFormat('d.m.Y', request()->end)->format('Y-m-d');
             
-             $beleges->whereRaw("STR_TO_DATE(LEFT(receiptdate,LOCATE(' ',receiptdate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
+             $beleges->whereRaw("STR_TO_DATE(receiptdate,'%d.%m.%Y') BETWEEN '$start' AND '$end'");
 
          }
                     
@@ -159,7 +159,7 @@ class HomeController extends Controller
            $order = !in_array(\Str::lower(request()->order), ['desc','asc'])  ? 'ASC' 
              : request()->order;
              
-            $orderBy = ($orderBy == 'receiptdate') ? "STR_TO_DATE(LEFT(receiptdate,LOCATE(' ',receiptdate)),'%d.%m.%Y')" : $orderBy;
+            $orderBy = ($orderBy == 'receiptdate') ? "STR_TO_DATE(receiptdate,'%d.%m.%Y')" : $orderBy;
 
             $beleges->orderByRaw("$orderBy $order");
 
