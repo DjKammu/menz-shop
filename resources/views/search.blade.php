@@ -34,7 +34,7 @@
                 
                 <div class="col-md-12 menz-col pb-0 pull-right mobile-more" id="menz-mobile-sort">
                     
-                    <select style="width: auto;" onchange="sortOrderBy('filedate', this.value)" name="orderBy" class="form-control">
+                    <select style="width: auto;" onchange="sortOrderBy('receiptdate', this.value)" name="orderBy" class="form-control">
                       <option value="">Dateidatum 
                         <i class="fa fa-caret-up"> <i class="fa fa-caret-down"></i></option>
                       <option value="DESC" {{ @request()->d == 'DESC' ? 'selected' : ''}}>Dateidatum absteigend</option>
@@ -68,9 +68,9 @@
                                 <tr class="menz-table-row">
                                  <th scope="col" class="menz-date-filter">
                                     Dateidatum                    
-                                    <a class="d-none d-md-inline-block" onclick="sortOrderBy('filedate', 'ASC')"  href="javascript:void(0)">
+                                    <a class="d-none d-md-inline-block" onclick="sortOrderBy('receiptdate', 'ASC')"  href="javascript:void(0)">
                                       <i class="fa fa-caret-up"></i></a>
-                                    <a class="d-none d-md-inline-block" onclick="sortOrderBy('filedate', 'DESC')"  href="javascript:void(0)">
+                                    <a class="d-none d-md-inline-block" onclick="sortOrderBy('receiptdate', 'DESC')"  href="javascript:void(0)">
                                       <i class="fa fa-caret-down"></i></a>
                                 </th>
                                 <th scope="col">Belegart</th>
@@ -89,7 +89,7 @@
                           @foreach(@$beleges as $belege)
 
                            <tr>
-                            <td class="menz-mono-font">{{ \Carbon\Carbon::parse($belege->filedate)->format('d.m.Y') }}</td>
+                            <td class="menz-mono-font">{{ \Carbon\Carbon::parse($belege->receiptdate)->format('d.m.Y') }}</td>
                             <td class="menz-cat-{{ \Str::lower($belege->doctype) }}"><span>{{  $belege->doctype }}</span></td>
                             <td>{{  $belege->doc_number }}</td>
                             <td> <a href="{{ route('view',['id' => $belege->number] )}}" target="_blank">Ansicht</a> </td>

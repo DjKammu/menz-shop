@@ -219,7 +219,8 @@ $(document).ready(function(){
          applyLabel: 'anwenden',
          monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
          daysOfWeek: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
-         firstDay: 1
+         firstDay: 1,
+         format:  'DD.MM.YYYY'
         };
 
        
@@ -231,11 +232,11 @@ $(document).ready(function(){
          $('input[name="daterange"]').daterangepicker({
           locale:germanLocale,
           opens: 'left'
-        });
- 
+        });     
 
-        $('input[name="daterange"]').data('daterangepicker').setStartDate(moment(start,'DD.MM.YYYY').format("MM/DD/YYYY"));
-        $('input[name="daterange"]').data('daterangepicker').setEndDate(moment(end,'DD.MM.YYYY').format("MM/DD/YYYY"));
+
+        $('input[name="daterange"]').data('daterangepicker').setStartDate(moment(start,'DD.MM.YYYY').format("DD.MM.YYYY"));
+        $('input[name="daterange"]').data('daterangepicker').setEndDate(moment(end,'DD.MM.YYYY').format("DD.MM.YYYY"));
 
         
          if(urlParams.get('start') && urlParams.get('end')){ 

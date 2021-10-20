@@ -41,19 +41,19 @@ class HomeController extends Controller
              $start = Carbon::createFromFormat('d.m.Y',request()->start)->format('Y-m-d');
              $end = Carbon::createFromFormat('d.m.Y', request()->end)->format('Y-m-d');
             
-             $beleges->whereRaw("STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
+             $beleges->whereRaw("STR_TO_DATE(LEFT(receiptdate,LOCATE(' ',receiptdate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
 
          }
 
                     
         if(request()->filled('order')){
             $orderBy = request()->filled('orderby') ? ( !in_array(request()->orderby, 
-                ['filedate','number'] ) ? 'number' : request()->orderby ) : 'number';
+                ['receiptdate','number'] ) ? 'number' : request()->orderby ) : 'number';
             
             $order = !in_array(\Str::lower(request()->order), ['desc','asc'])  ? 'ASC' 
              : request()->order;
 
-            $orderBy = ($orderBy == 'filedate') ? "STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y')" : $orderBy;
+            $orderBy = ($orderBy == 'receiptdate') ? "STR_TO_DATE(LEFT(receiptdate,LOCATE(' ',receiptdate)),'%d.%m.%Y')" : $orderBy;
 
             $beleges->orderByRaw("$orderBy $order");
 
@@ -100,7 +100,7 @@ class HomeController extends Controller
              $start = Carbon::createFromFormat('d.m.Y',request()->start)->format('Y-m-d');
              $end = Carbon::createFromFormat('d.m.Y', request()->end)->format('Y-m-d');
             
-             $beleges->whereRaw("STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
+             $beleges->whereRaw("STR_TO_DATE(LEFT(receiptdate,LOCATE(' ',receiptdate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
 
          }
 
@@ -108,12 +108,12 @@ class HomeController extends Controller
                     
         if(request()->filled('order')){
             $orderBy = request()->filled('orderby') ? ( !in_array(request()->orderby, 
-                ['filedate','number'] ) ? 'number' : request()->orderby ) : 'number';
+                ['receiptdate','number'] ) ? 'number' : request()->orderby ) : 'number';
             
             $order = !in_array(\Str::lower(request()->order), ['desc','asc'])  ? 'ASC' 
              : request()->order;
 
-           $orderBy = ($orderBy == 'filedate') ? "STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y')" : $orderBy;
+           $orderBy = ($orderBy == 'receiptdate') ? "STR_TO_DATE(LEFT(receiptdate,LOCATE(' ',receiptdate)),'%d.%m.%Y')" : $orderBy;
 
             $beleges->orderByRaw("$orderBy $order");
 
@@ -148,18 +148,18 @@ class HomeController extends Controller
              $start = Carbon::createFromFormat('d.m.Y',request()->start)->format('Y-m-d');
              $end = Carbon::createFromFormat('d.m.Y', request()->end)->format('Y-m-d');
             
-             $beleges->whereRaw("STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
+             $beleges->whereRaw("STR_TO_DATE(LEFT(receiptdate,LOCATE(' ',receiptdate)),'%d.%m.%Y') BETWEEN '$start' AND '$end'");
 
          }
                     
        if(request()->filled('order')){
             $orderBy = request()->filled('orderby') ? ( !in_array(request()->orderby, 
-                ['filedate','number'] ) ? 'number' : request()->orderby ) : 'number';
+                ['receiptdate','number'] ) ? 'number' : request()->orderby ) : 'number';
             
            $order = !in_array(\Str::lower(request()->order), ['desc','asc'])  ? 'ASC' 
              : request()->order;
              
-            $orderBy = ($orderBy == 'filedate') ? "STR_TO_DATE(LEFT(filedate,LOCATE(' ',filedate)),'%d.%m.%Y')" : $orderBy;
+            $orderBy = ($orderBy == 'receiptdate') ? "STR_TO_DATE(LEFT(receiptdate,LOCATE(' ',receiptdate)),'%d.%m.%Y')" : $orderBy;
 
             $beleges->orderByRaw("$orderBy $order");
 
@@ -191,7 +191,7 @@ class HomeController extends Controller
         header("Content-type: application/pdf");
         header("Cache-Control: no-cache");
         header("Pragma: no-cache");
-        header("Content-Disposition: attachment; filename=".Carbon::parse($file->filedate)->format('d.m.Y').'-'.
+        header("Content-Disposition: attachment; filename=".Carbon::parse($file->receiptdate)->format('d.m.Y').'-'.
             $file->doc_number.'.pdf');
         echo $binFile;
         exit();
