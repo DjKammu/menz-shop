@@ -87,7 +87,7 @@
                            <tr>
                             <td class="menz-mono-font">{{ \Carbon\Carbon::parse($belege->receiptdate)->format('d.m.Y') }}</td>
                             <td class="menz-cat-{{ \Str::lower($belege->doctype) }}"><span>{{  $belege->doctype }}</span></td>
-                            <td>{{  $belege->doc_number }}</td>
+                            <td class="menz-mono-font">{{  $belege->doc_number }}</td>
                             <td> <a href="{{ route('view',['id' => $belege->number] )}}" target="_blank">Ansicht</a> </td>
                             <td> <a href="{{ route('download',['id' => $belege->number] )}}" target="_blank">Herunterladen</a> </td>
                           </tr>

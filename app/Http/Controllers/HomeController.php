@@ -44,7 +44,10 @@ class HomeController extends Controller
              $beleges->whereRaw("STR_TO_DATE(receiptdate,'%d.%m.%Y') BETWEEN '$start' AND '$end'");
 
          }
-
+         
+         $orderBy = "STR_TO_DATE(receiptdate,'%d.%m.%Y')";
+            
+         $order ='DESC' ;
                     
         if(request()->filled('order')){
             $orderBy = request()->filled('orderby') ? ( !in_array(request()->orderby, 
@@ -55,10 +58,10 @@ class HomeController extends Controller
 
             $orderBy = ($orderBy == 'receiptdate') ? "STR_TO_DATE(receiptdate,'%d.%m.%Y')" : $orderBy;
 
-            $beleges->orderByRaw("$orderBy $order");
-
         }
-         
+
+        $beleges->orderByRaw("$orderBy $order");
+
         $beleges = $beleges->paginate( (new Belege())->perPage);   
 
 
@@ -106,6 +109,10 @@ class HomeController extends Controller
 
 
                     
+        $orderBy = "STR_TO_DATE(receiptdate,'%d.%m.%Y')";
+            
+         $order ='DESC' ;
+                    
         if(request()->filled('order')){
             $orderBy = request()->filled('orderby') ? ( !in_array(request()->orderby, 
                 ['receiptdate','number'] ) ? 'number' : request()->orderby ) : 'number';
@@ -113,11 +120,11 @@ class HomeController extends Controller
             $order = !in_array(\Str::lower(request()->order), ['desc','asc'])  ? 'ASC' 
              : request()->order;
 
-           $orderBy = ($orderBy == 'receiptdate') ? "STR_TO_DATE(receiptdate,'%d.%m.%Y')" : $orderBy;
-
-            $beleges->orderByRaw("$orderBy $order");
+            $orderBy = ($orderBy == 'receiptdate') ? "STR_TO_DATE(receiptdate,'%d.%m.%Y')" : $orderBy;
 
         }
+
+        $beleges->orderByRaw("$orderBy $order");
          
 
         $beleges = $beleges->paginate( (new Belege())->perPage);
@@ -152,18 +159,22 @@ class HomeController extends Controller
 
          }
                     
-       if(request()->filled('order')){
+        $orderBy = "STR_TO_DATE(receiptdate,'%d.%m.%Y')";
+            
+         $order ='DESC' ;
+                    
+        if(request()->filled('order')){
             $orderBy = request()->filled('orderby') ? ( !in_array(request()->orderby, 
                 ['receiptdate','number'] ) ? 'number' : request()->orderby ) : 'number';
             
-           $order = !in_array(\Str::lower(request()->order), ['desc','asc'])  ? 'ASC' 
+            $order = !in_array(\Str::lower(request()->order), ['desc','asc'])  ? 'ASC' 
              : request()->order;
-             
+
             $orderBy = ($orderBy == 'receiptdate') ? "STR_TO_DATE(receiptdate,'%d.%m.%Y')" : $orderBy;
 
-            $beleges->orderByRaw("$orderBy $order");
-
         }
+
+        $beleges->orderByRaw("$orderBy $order");
          
         $beleges = $beleges->paginate( (new Belege())->perPage);           
 

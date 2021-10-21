@@ -848,20 +848,20 @@ tr:nth-child(even) {
 }
 .menz-date-filter a i.fa-caret-up {
     top: 22%;
-    margin-left: 10px;
+    margin-left: 8px;
 }
 .menz-date-filter a i.fa-caret-down {
     bottom: 22%;
-    margin-left: 6.5px;
+    margin-left: 5px;
 }
 .menz-cat-auftrag span, .menz-cat-stornorechnung span, .menz-cat-rechnung span, .menz-cat-angebot span, .menz-cat-barverkauf span,
-.menz-cat-auftrags-storno span, .menz-cat-bar-storno span, .menz-cat-lieferschein span, .menz-cat-rücklieferschein span, .menz-cat-gutschrift span,
- .menz-cat-sofortrechnung span, .menz-cat-direktrechnung span, .menz-cat-rücklieferschein span, .menz-cat-kontrollwiegung span {
+.menz-cat-auftrags-storno span, .menz-cat-bar-storno span, .menz-cat-lieferschein span, .menz-cat-rÃ¼cklieferschein span, .menz-cat-gutschrift span,
+ .menz-cat-sofortrechnung span, .menz-cat-direktrechnung span, .menz-cat-rÃ¼cklieferschein span, .menz-cat-kontrollwiegung span {
     color: #fff;
     padding: 3px 15px;
     border-radius: 30px;
 }
-.menz-cat-rücklieferschein span {
+.menz-cat-rÃ¼cklieferschein span {
     background: #4f48bd;
 }
 
@@ -896,7 +896,7 @@ tr:nth-child(even) {
     background: #fe8faf;
 }
 
-.menz-cat-rÃ¼cklieferschein span {
+.menz-cat-rÃƒÂ¼cklieferschein span {
     background: #ff9667;
 }
 
@@ -948,11 +948,20 @@ nav.flex.items-center.justify-between {
 .daterange-picker:focus-visible {
     outline: 0;
 }
-.menz-table {
+.menz-table, .menz-table .menz-table-row {
+    font-family: 'SF Pro Display';
+    font-size: 15px;
+}
+.menz-table .menz-mono-font {
     font-family: 'CourierPrime';
 }
-.menz-table .menz-table-row {
-    font-family: 'SF Pro Display';
+.menz-table .menz-table-row th {
+    font-weight: 400 !important;
+    opacity: 0.8;
+    transition: 0.5s ease opacity;
+}
+.menz-table .menz-table-row th:hover {
+    opacity: 1;
 }
 #nav-tabContent {
     margin-top: 5px !important;
