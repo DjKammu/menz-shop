@@ -856,7 +856,7 @@ tr:nth-child(even) {
 }
 .menz-cat-auftrag span, .menz-cat-stornorechnung span, .menz-cat-rechnung span, .menz-cat-angebot span, .menz-cat-barverkauf span,
 .menz-cat-auftrags-storno span, .menz-cat-bar-storno span, .menz-cat-lieferschein span, .menz-cat-rÃ¼cklieferschein span, .menz-cat-gutschrift span,
- .menz-cat-sofortrechnung span, .menz-cat-direktrechnung span, .menz-cat-rÃ¼cklieferschein span, .menz-cat-kontrollwiegung span {
+ .menz-cat-sofortrechnung span, .menz-cat-direktrechnung span, .menz-cat-rÃ¼cklieferschein span, .menz-cat-kontrollwiegung span, .menz-cat-rücklieferschein span {
     color: #fff;
     padding: 3px 15px;
     border-radius: 30px;
@@ -917,6 +917,9 @@ tr:nth-child(even) {
 }
 .menz-cat-kontrollwiegung span {
     background: #fd5959;
+}
+.menz-cat-rücklieferschein span {
+    background: #1dc9c1;
 }
 
  /* Pagination CSS  */
