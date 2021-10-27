@@ -84,8 +84,10 @@
                       </tbody>
                     </table>
                   </div>
-
+                  
+                  <div id="menz-pagination-cat"> 
                   {{ $beleges->withQueryString()->links() }}
+                </div>
 
               </div>
           </div>
