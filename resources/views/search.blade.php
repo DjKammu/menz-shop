@@ -9,7 +9,7 @@
 <div class="menz-rechnung">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 menz-col">
                 <div class="searchInputBox">
                     <input type="text" class="form-control developerSearchInput" value="{{ @$search }}"  placeholder="Nach Schlagwörtern suchen">
                     <span>
