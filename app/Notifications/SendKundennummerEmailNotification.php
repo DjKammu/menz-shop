@@ -41,10 +41,10 @@ class SendKundennummerEmailNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                      ->subject('Send Kundennummer Notification')
-                    ->line('Here is your Kundennummer of your account.')
+                      ->subject('Kundennummer-Benachrichtigung senden')
+                    ->line('Hier ist Ihre Kundennummer Ihres Kontos.')
                     ->line('Kundennummer '.$this->user->Kundennummer)
-                    ->line('Thank you for using our application!');
+                    ->line('Vielen Dank für die Nutzung unserer Anwendung!');
     }
 
     /**

@@ -55,7 +55,7 @@ class ForgotPasswordController extends Controller
 
         Notification::send($user,new SendKundennummerEmailNotification($user));
         
-        return back()->with('status-kundennummer', 'Kundennummer has been sent to your email address');
+        return back()->with('status-kundennummer', 'Kundennummer wurde an Ihre E-Mail-Adresse gesendet');
     }
     
 

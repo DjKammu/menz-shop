@@ -50,14 +50,14 @@ class LoginController extends Controller
      $user = User::where('kundennummer',$id)->first();
       
      if (!$user) {
-         $message = 'Kundennummer is invalid.';
+         $message = 'Kundennummer ist ungültig.';
          return  \Response::json($message, 404);
      } elseif ($user->first_login == User::DEFAULT_FIRST_LOGIN) {
         
                 $token = Password::getRepository()->create($user);
                 $user->sendPasswordResetNotification($token);
 
-          $message = 'Reset password link sent to your email.Please set your password and login.';
+          $message = 'Link zum Zurücksetzen des Passworts an Ihre E-Mail gesendet.Bitte legen Sie Ihr Passwort fest und melden Sie sich an.';
           return  \Response::json($message, 200);
      }else{
          $message = ['msg' => 0];
