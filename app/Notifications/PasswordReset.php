@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class SendKundennummerEmailNotification extends Notification
+class PasswordReset extends Notification
 {
     use Queueable;
 
@@ -16,9 +16,9 @@ class SendKundennummerEmailNotification extends Notification
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($token)
     {
-        $this->user = $user;
+        $this->token = $token;
     }
 
     /**
@@ -41,9 +41,10 @@ class SendKundennummerEmailNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                      ->subject('Kundennummer-Benachrichtigung senden')
-                      ->line('Hier ist Ihre Kundennummer Ihres Konto: '.$this->user->Kundennummer);
-                    // ->line('Vielen Dank für die Nutzung unserer Anwendung!');
+            ->subject('Passwort-Benachrichtigung zurücksetzen')
+            ->line('Sie erhalten diese E-Mail, weil wir eine Anfrage zum Zurücksetzen des Passworts für Ihr Konto erhalten haben.')
+            ->action('Passwort zurücksetzen', url('password/reset', $this->token))
+            ->line('Wenn Sie kein Zurücksetzen des Passworts angefordert haben, ist keine weitere Aktion erforderlich.');
     }
 
     /**
