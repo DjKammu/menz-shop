@@ -864,6 +864,12 @@ tr:nth-child(even) {
 .menz-cat-rácklieferschein span {
     background: #4f48bd;
 }
+.menz-table span{
+   color: #fff;
+    padding: 3px 15px;
+    border-radius: 30px;
+    background: #4f48bd;
+}
 
 .menz-cat-auftrag span {
     background: #38c49f;
