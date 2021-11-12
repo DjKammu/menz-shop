@@ -855,13 +855,13 @@ tr:nth-child(even) {
     margin-left: 5px;
 }
 .menz-cat-auftrag span, .menz-cat-stornorechnung span, .menz-cat-rechnung span, .menz-cat-angebot span, .menz-cat-barverkauf span,
-.menz-cat-auftrags-storno span, .menz-cat-bar-storno span, .menz-cat-lieferschein span, .menz-cat-rÃƒÆ’Ã‚Â¼cklieferschein span, .menz-cat-gutschrift span,
- .menz-cat-sofortrechnung span, .menz-cat-direktrechnung span, .menz-cat-rÃƒÆ’Ã‚Â¼cklieferschein span, .menz-cat-kontrollwiegung span, .menz-cat-rücklieferschein span {
+.menz-cat-auftrags-storno span, .menz-cat-bar-storno span, .menz-cat-lieferschein span, .menz-cat-rücklieferschein span, .menz-cat-gutschrift span,
+ .menz-cat-sofortrechnung span, .menz-cat-direktrechnung span, .menz-cat-rácklieferschein span, .menz-cat-kontrollwiegung span, .menz-cat-rücklieferschein span {
     color: #fff;
     padding: 3px 15px;
     border-radius: 30px;
 }
-.menz-cat-rÃƒÆ’Ã‚Â¼cklieferschein span {
+.menz-cat-rácklieferschein span {
     background: #4f48bd;
 }
 
@@ -894,10 +894,6 @@ tr:nth-child(even) {
 
 .menz-cat-lieferschein span {
     background: #fe8faf;
-}
-
-.menz-cat-rÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¼cklieferschein span {
-    background: #ff9667;
 }
 
 .menz-cat-gutschrift span {
@@ -984,6 +980,13 @@ nav.flex.items-center.justify-between {
 }
 .menz-faq-content ol li {
     margin: 3px 0;
+}
+.menz-footer a {
+    color: #0070c9;
+    text-decoration: none;
+}
+.menz-footer a:hover {
+    text-decoration: underline;
 }
 
 @media (max-width:991px) {
