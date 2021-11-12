@@ -60,6 +60,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 
+
+Route::get('/faq', [App\Http\Controllers\HomeController::class, 'faq'])->name('faq');
+
+
 Route::get('/search', [App\Http\Controllers\HomeController::class,'search'])
         ->name('search');
 

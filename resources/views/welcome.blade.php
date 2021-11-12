@@ -13,9 +13,7 @@
                   <div class="alert alert-success" style="display:none;" id="alert-success" role="alert">
                     </div>
                   <h2 class="formHeading text-center">Menz Belegportal</h2>
-            
-                    
-          
+                  
                    <form method="POST" action="{{ route('login') }}">
                         @csrf
                       <div class="login-form">
@@ -62,7 +60,7 @@
                       </div>
 
                       <div class="text-center no-access" >
-                        Noch keinen Zugang? <a href="#" class="links">Kontakt</a><br>
+                        Noch keinen Zugang? <a href="https://menz-gmbh.de/kontakt/" class="links">Kontakt</a><br>
                       </div>
                   </form>
                 </div>

@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Confirm Password') }}</div>
 
                 <div class="card-body">
-                    {{ __('Please confirm your password before continuing.') }}
+                    {{ __('Bitte bestätigen Sie Ihr Passwort, bevor Sie fortfahren.') }}
 
                     <form method="POST" action="{{ route('password.confirm') }}">
                         @csrf
@@ -35,7 +35,7 @@
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ __('Passwort vergessen?') }}
                                     </a>
                                 @endif
                             </div>

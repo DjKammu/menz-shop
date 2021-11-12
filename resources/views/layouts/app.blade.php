@@ -88,7 +88,10 @@
 
 
       <footer class="menz-footer text-center menz-login-footer">
-        © Copyright - Menz Naturbaustoffe in Wiesbaden
+        © {{ date('Y') }} Copyright - Menz GmbH - Naturbaustoffe In Wiesbaden 
+        </br>
+       <a href="https://menz-gmbh.de/impressum/">IMPRESSUM</a> | <a href="https://menz-gmbh.de/datenschutz/">DATENSCHUTZ</a>  | <a href=" https://menz-gmbh.de/kontakt/">KONTAKT </a> | <a href="{{ route('faq') }}">FAQ</a> 
+
       </footer>
 
      <!-- Bootstrap core JavaScript -->

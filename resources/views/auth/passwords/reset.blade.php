@@ -8,8 +8,8 @@
         <div class="container">
           <div class="row justify-content-center text-center">
               <div class="col-md-8">
-                <h1 class="formHeading reset-title">Reset Password</h1>
-                <p class="pass-hint mb-2">Password hint: Use 8 or more characters with a mix of letters, numbers, and symbols.</p>
+                <h1 class="formHeading reset-title">Passwort zurücksetzen</h1>
+                <p class="pass-hint mb-2">Passwort-Hinweis: Verwenden Sie 8 oder mehr Zeichen mit einer Mischung aus Buchstaben, Zahlen und Symbolen.</p>
                 @if (session('status'))
                       <div class="alert alert-success" role="alert">
                           {{ session('status') }}
@@ -43,10 +43,10 @@
                         <div class="form-element mb-2 mx-auto">
                           <input type="password" class=" form-textbox form-textbox-text " id="resetconfirmpass" name="password_confirmation" required autocomplete="new-password">
 
-                            <span aria-hidden="true" class="form-label" id="resetconfirmpassLabel">Confirm Passwort</span>    
+                            <span aria-hidden="true" class="form-label" id="resetconfirmpassLabel">Passwort bestätigen</span>    
                         </div>
                         <button type="submit" class="button" id="resetBtn" disabled>
-                          Reset Passwort
+                          Passwort zurücksetzen
                         </button>         
                     </form>
                 </div>
