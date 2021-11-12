@@ -17,13 +17,13 @@
                 <ul class="mt-3 list-unstyled">
                   <li><b>Schritt 1:</b> Gehen Sie auf <a href="{{ url('/')}}">{{ url('/')}}</a>
                   <br><br>
-                  <img class="img-fluid border" src="images/screenshot-01.png" alt="">
+                  <img class="img-fluid border" src="{{ url(asset('images/screenshot-01.png')) }}" alt="">
                   <br><br>
                   </li>
                   <li><b>Schritt 2:</b> Geben Sie Ihre Kundennummer und Passwort ein. </li>
                   <li><b>Schritt 3:</b> Hiermit erhalten Sie eine Übersicht aller Rech-/Stornorechnungen, Liefer- / Rücklieferscheinen, Aufträgen, Angebote. 
                     <br><br>
-                    <img class="img-fluid border" src="images/screenshot-02.png" alt="">
+                    <img class="img-fluid border" src="{{ url(asset('images/screenshot-02.png')) }}" alt="">
                     <br><br>
                   </li> 
                 </ul>

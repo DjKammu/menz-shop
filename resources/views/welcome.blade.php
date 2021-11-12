@@ -60,7 +60,7 @@
                       </div>
 
                       <div class="text-center no-access" >
-                        Noch keinen Zugang? <a href="https://menz-gmbh.de/kontakt/" class="links">Kontakt</a>|<a href="{{ route('faq') }}" class="links">FAQ</a><br>
+                        Noch keinen Zugang? <a href="https://menz-gmbh.de/kontakt/" class="links">Kontakt</a> | <a href="{{ route('faq') }}" class="links">FAQ</a><br>
                       </div>
                   </form>
                 </div>
