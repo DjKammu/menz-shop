@@ -33,7 +33,7 @@
 @if (! empty($salutation))
 {{ $salutation }} 
 @else
-Haben Sie Fragen? Dann kontaktieren Sie uns gerne. 
+Haben Sie Fragen? Dann kontaktieren Sie uns gerne <br> 
 @lang('Mit freundlichen Grüßen'),<br>
 Ihr Menz Belegportal Team
 @endif

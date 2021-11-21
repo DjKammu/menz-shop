@@ -51,6 +51,19 @@ class ResetPasswordController extends Controller
 
         $this->guard()->login($user);
     }
+     
 
+    /**
+     * Get the password reset validation error messages.
+     *
+     * @return array
+     */
+    protected function validationErrorMessages()
+    {
+        return [
+        'password.confirmed' => 'Die Passwortanforderungen sind noch nicht erfüllt.'
+        ];
+    }
+ 
 
 }
