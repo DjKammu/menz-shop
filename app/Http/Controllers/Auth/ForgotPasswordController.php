@@ -33,7 +33,9 @@ class ForgotPasswordController extends Controller
      */
     protected function validateEmail(Request $request)
     {
-        $request->validate(['kundennummer' => 'required|exists:Login,kundennummer']);
+        $request->validate(['kundennummer' => 'required|exists:Login,kundennummer'],[
+         'kundennummer.exists' => ' Die eingegebene Kundennummer ist nicht Korrekt.'
+        ]);
     }
     
     /**
@@ -58,5 +60,4 @@ class ForgotPasswordController extends Controller
         return back()->with('status-kundennummer', 'Kundennummer wurde an Ihre E-Mail-Adresse gesendet');
     }
     
-
 }
