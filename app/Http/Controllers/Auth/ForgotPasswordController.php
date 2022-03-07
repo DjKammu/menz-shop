@@ -54,10 +54,22 @@ class ForgotPasswordController extends Controller
         $request->validate(['email' => 'required|email|exists:Login,email']);
 
         $user = User::where($request->only('email'))->first();
+        
+        $email = $this->hideEmail($request->email);
 
         Notification::send($user,new SendKundennummerEmailNotification($user));
         
-        return back()->with('status-kundennummer', 'Kundennummer wurde an Ihre E-Mail-Adresse gesendet');
+        return back()->with('status-kundennummer', 'Kundennummer wurde an Ihre E-Mail-Adresse '.$email.' gesendet');
     }
+
+    public function hideEmail($email){
+
+        $formatemail = substr($email,0,3);
+        $formatemail .= "***@***";
+        $formatemail .= substr($email,strpos($email, ".") - 1);
+        return $formatemail;
+
+    }
+
     
 }
