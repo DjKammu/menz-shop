@@ -62,4 +62,15 @@ class User extends Authenticatable
     {
         $this->notify(new PasswordReset($token));
     }
+
+     public function hideEmail($email){
+
+        $formatemail = substr($email,0,3);
+        $formatemail .= "***@***";
+        $lastWord = last(explode('.', $email));
+        $formatemail .= substr($email,strpos($email, $lastWord ) - 2);
+        return $formatemail;
+
+    }
+
 }

@@ -55,21 +55,26 @@ class ForgotPasswordController extends Controller
 
         $user = User::where($request->only('email'))->first();
         
-        $email = $this->hideEmail($request->email);
+        $email = (new User())->hideEmail($request->email);
 
         Notification::send($user,new SendKundennummerEmailNotification($user));
         
         return back()->with('status-kundennummer', 'Kundennummer wurde an Ihre E-Mail-Adresse '.$email.' gesendet');
     }
 
-    public function hideEmail($email){
+    protected function sendResetLinkResponse(Request $request, $response)
+    {
+        $user = User::where($request->only('kundennummer'))->first();
+        
+        $email = (new User())->hideEmail($user->email);
 
-        $formatemail = substr($email,0,3);
-        $formatemail .= "***@***";
-        $formatemail .= substr($email,strpos($email, ".") - 1);
-        return $formatemail;
+        $message = 'Wir haben Ihren Link zum Zurücksetzen Ihres Passworts per E-Mail '.$email.' gesendet!';
 
+        return $request->wantsJson()
+                    ? new JsonResponse(['message' => $message], 200)
+                    : back()->with('status', $message);
     }
+
 
     
 }

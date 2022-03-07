@@ -56,8 +56,9 @@ class LoginController extends Controller
         
                 $token = Password::getRepository()->create($user);
                 $user->sendPasswordResetNotification($token);
+                $email = (new User())->hideEmail($user->email);
 
-          $message = 'Link zum Zurücksetzen des Passworts an Ihre E-Mail gesendet.Bitte legen Sie Ihr Passwort fest und melden Sie sich an.';
+          $message = 'Link zum Zurücksetzen des Passworts an Ihre E-Mail-Adresse '.$email.' gesendet. Bitte legen Sie Ihr Passwort fest und melden Sie sich an.';
           return  \Response::json($message, 200);
      }else{
          $message = ['msg' => 0];
@@ -65,6 +66,16 @@ class LoginController extends Controller
      }   
       
     }
+
+     public function hideEmail($email){
+
+        $formatemail = substr($email,0,3);
+        $formatemail .= "***@***";
+        $formatemail .= substr($email,strpos($email, ".") - 1);
+        return $formatemail;
+
+    }
+
 
      /**
      * Get the login username to be used by the controller.
