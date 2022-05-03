@@ -16,9 +16,9 @@ class SendKundennummerEmailNotification extends Notification
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($users)
     {
-        $this->user = $user;
+        $this->users = $users;
     }
 
     /**
@@ -40,9 +40,10 @@ class SendKundennummerEmailNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        $ids  = $this->users->pluck('Kundennummer')->join(', ');
         return (new MailMessage)
                       ->subject('Kundennummer-Benachrichtigung senden')
-                      ->line('Hier ist Ihre Kundennummer Ihres Konto: '.$this->user->Kundennummer);
+                      ->line('Hier ist Ihre Kundennummer Ihres Konto: '.$ids);
                     // ->line('Vielen Dank für die Nutzung unserer Anwendung!');
     }
 

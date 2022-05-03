@@ -10,7 +10,7 @@
               <div class="col-md-8">
                 <h1 class="formHeading reset-title">Passwort zurücksetzen</h1>
                 <p class="pass-hint mb-2">Passwort-Hinweis: Verwenden Sie 8 oder mehr Zeichen mit einer Mischung aus Buchstaben, Zahlen und Symbolen.</p>
-                @if (session('status'))
+                 @if (session('status'))
                       <div class="alert alert-success" role="alert">
                           {{ session('status') }}
                       </div>
@@ -20,10 +20,10 @@
                         @csrf
                          <input type="hidden" name="token" value="{{ $token }}">
                         <div class="form-element mb-2 mx-auto">
-                          <input type="email" name="email" class="form-textbox form-textbox-text @error('email') is-invalid @enderror" id="resetemail" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-                            <span aria-hidden="true" class="form-label" id="resetemailLabel">E-Mail Address</span>    
+                          <input type="text" name="Kundennummer" class="form-textbox form-textbox-text @error('Kundennummer') is-invalid @enderror" id="resetemail" value="{{ $Kundennummer ?? old('Kundennummer') }}" required autocomplete="Kundennummer" autofocus>
+                            <span aria-hidden="true" class="form-label" id="resetemailLabel">Kundennummer</span>    
 
-                            @error('email')
+                            @error('Kundennummer')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

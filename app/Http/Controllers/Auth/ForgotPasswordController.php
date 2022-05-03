@@ -53,11 +53,11 @@ class ForgotPasswordController extends Controller
 
         $request->validate(['email' => 'required|email|exists:Login,email']);
 
-        $user = User::where($request->only('email'))->first();
+        $users = User::where($request->only('email'))->get();
         
         $email = (new User())->hideEmail($request->email);
 
-        Notification::send($user,new SendKundennummerEmailNotification($user));
+        Notification::send(@$users->first(),new SendKundennummerEmailNotification($users));
         
         return back()->with('status-kundennummer', 'Kundennummer wurde an Ihre E-Mail-Adresse '.$email.' gesendet');
     }
